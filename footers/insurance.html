@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insurance Coverage - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #6366f1; --secondary: #8b5cf6; --accent: #ec4899; --dark: #0f172a; --card: #1a1f35; --border: #2d3548; --text: #cbd5e1; --text-dark: #94a3b8; --success: #10b981; --warning: #f59e0b; --gold: #fbbf24; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text); text-decoration: none; margin-left: 2rem; }
+    .btn-home { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; }
+    
+    .page-hero { padding: 150px 5% 80px; text-align: center; background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(99,102,241,0.1)); }
+    .page-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.2rem; color: var(--text-dark); max-width: 600px; margin: 0 auto; }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+    
+    /* Insurance Plans */
+    .plans-section { margin-bottom: 5rem; }
+    .plans-section h2 { text-align: center; font-size: 2.5rem; color: white; margin-bottom: 1rem; }
+    .plans-section > p { text-align: center; color: var(--text-dark); margin-bottom: 3rem; }
+    
+    .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .plan-card { background: var(--card); border: 1px solid var(--border); border-radius: 25px; padding: 2.5rem; position: relative; transition: all 0.3s; }
+    .plan-card:hover { transform: translateY(-10px); }
+    .plan-card.featured { border: 2px solid var(--gold); }
+    .plan-card.featured::before { content: '⭐ RECOMMENDED'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--gold), #f59e0b); color: #000; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+    
+    .plan-header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .plan-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .plan-header h3 { color: white; font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .plan-price { font-size: 2.5rem; font-weight: 800; color: var(--primary); }
+    .plan-price span { font-size: 1rem; color: var(--text-dark); font-weight: 400; }
+    
+    .plan-features { margin-bottom: 2rem; }
+    .plan-feature { display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0; }
+    .plan-feature.included { color: var(--text); }
+    .plan-feature.excluded { color: var(--text-dark); text-decoration: line-through; opacity: 0.6; }
+    .feature-icon { font-size: 1.1rem; }
+    .feature-icon.yes { color: var(--success); }
+    .feature-icon.no { color: #ef4444; }
+    
+    .btn-plan { width: 100%; padding: 1rem; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+    .btn-basic { background: transparent; border: 2px solid var(--border); color: var(--text); }
+    .btn-basic:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-premium { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99,102,241,0.4); }
+    .btn-elite { background: linear-gradient(135deg, var(--gold), #f59e0b); color: #000; }
+    .btn-elite:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(251,191,36,0.4); }
+    
+    /* Coverage Details */
+    .coverage-section { margin: 5rem 0; }
+    .coverage-section h2 { font-size: 2.5rem; color: white; text-align: center; margin-bottom: 3rem; }
+    .coverage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .coverage-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s; }
+    .coverage-card:hover { border-color: var(--primary); }
+    .coverage-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .coverage-card h3 { color: white; margin-bottom: 0.8rem; }
+    .coverage-card p { color: var(--text-dark); font-size: 0.95rem; }
+    
+    /* Comparison Table */
+    .comparison-section { margin: 5rem 0; overflow-x: auto; }
+    .comparison-section h2 { font-size: 2rem; color: white; text-align: center; margin-bottom: 2rem; }
+    .comparison-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+    .comparison-table th, .comparison-table td { padding: 1rem; text-align: center; border-bottom: 1px solid var(--border); }
+    .comparison-table th { background: var(--card); color: white; font-weight: 600; }
+    .comparison-table th:first-child { text-align: left; }
+    .comparison-table td:first-child { text-align: left; color: var(--text-dark); }
+    .comparison-table td { color: var(--text); }
+    .check { color: var(--success); font-size: 1.2rem; }
+    .cross { color: #ef4444; font-size: 1.2rem; }
+    
+    /* FAQ */
+    .faq-section { margin: 5rem 0; }
+    .faq-section h2 { font-size: 2rem; color: white; text-align: center; margin-bottom: 2rem; }
+    .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+    .faq-question { padding: 1.2rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: white; font-weight: 600; }
+    .faq-question:hover { background: rgba(99,102,241,0.1); }
+    .faq-answer { padding: 0 1.5rem 1.2rem; color: var(--text-dark); display: none; }
+    .faq-item.active .faq-answer { display: block; }
+    .faq-item.active .faq-question { color: var(--primary); }
+    
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2)); border: 1px solid var(--border); border-radius: 25px; padding: 4rem; text-align: center; margin-top: 4rem; }
+    .cta-section h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; }
+    .cta-section p { color: var(--text-dark); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-cta { padding: 1rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+    .btn-cta-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+    .btn-cta-secondary { background: transparent; border: 2px solid var(--border); color: var(--text); }
+    .btn-cta:hover { transform: translateY(-3px); }
+    
+    footer { background: var(--dark); padding: 2rem 5%; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+    footer p { color: var(--text-dark); }
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    @media (max-width: 768px) { 
+      nav { display: none; } 
+      .plans-grid { grid-template-columns: 1fr; }
+      .plan-card.featured { margin-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../cars.html">Cars</a>
+      
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>Insurance Coverage</h1>
+    <p>Drive with complete peace of mind. Choose the protection that's right for you.</p>
+  </section>
+
+  <div class="container">
+    <!-- Insurance Plans -->
+    <div class="plans-section">
+      <h2>Choose Your Protection Plan</h2>
+      <p>All rentals include Basic coverage. Upgrade for enhanced protection.</p>
+      
+      <div class="plans-grid">
+        <!-- Basic Plan -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-icon">🛡️</div>
+            <h3>Basic</h3>
+            <div class="plan-price">Included<span></span></div>
+          </div>
+          <div class="plan-features">
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Third-party liability coverage</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Theft protection</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Fire damage coverage</div>
+            <div class="plan-feature excluded"><span class="feature-icon no">✗</span> Zero excess/deductible</div>
+            <div class="plan-feature excluded"><span class="feature-icon no">✗</span> Personal accident cover</div>
+            <div class="plan-feature excluded"><span class="feature-icon no">✗</span> Roadside assistance</div>
+            <div class="plan-feature excluded"><span class="feature-icon no">✗</span> Windscreen protection</div>
+          </div>
+          <button class="btn-plan btn-basic">Included Free</button>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="plan-card featured">
+          <div class="plan-header">
+            <div class="plan-icon">🛡️✨</div>
+            <h3>Premium</h3>
+            <div class="plan-price">₹499<span>/day</span></div>
+          </div>
+          <div class="plan-features">
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> All Basic coverage</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Reduced excess (₹5,000)</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Personal accident cover (₹5L)</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> 24/7 roadside assistance</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Windscreen protection</div>
+            <div class="plan-feature excluded"><span class="feature-icon no">✗</span> Zero excess</div>
+            <div class="plan-feature excluded"><span class="feature-icon no">✗</span> Tire & rim protection</div>
+          </div>
+          <button class="btn-plan btn-premium" onclick="alert('Premium plan selected!')">Select Premium</button>
+        </div>
+
+        <!-- Elite Plan -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-icon">👑</div>
+            <h3>Elite</h3>
+            <div class="plan-price">₹999<span>/day</span></div>
+          </div>
+          <div class="plan-features">
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> All Premium coverage</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> ZERO excess/deductible</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Personal accident (₹25L)</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Tire & rim protection</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Key replacement</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Personal belongings (₹50K)</div>
+            <div class="plan-feature included"><span class="feature-icon yes">✓</span> Trip interruption coverage</div>
+          </div>
+          <button class="btn-plan btn-elite" onclick="alert('Elite plan selected!')">Select Elite</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- What's Covered -->
+    <div class="coverage-section">
+      <h2>What's Covered?</h2>
+      <div class="coverage-grid">
+        <div class="coverage-card">
+          <div class="coverage-icon">🚗</div>
+          <h3>Vehicle Damage</h3>
+          <p>Coverage for collision damage, whether you're at fault or not. Repairs handled by our authorized service centers.</p>
+        </div>
+        <div class="coverage-card">
+          <div class="coverage-icon">🔒</div>
+          <h3>Theft Protection</h3>
+          <p>Full coverage if the vehicle is stolen during your rental period. Police report required within 24 hours.</p>
+        </div>
+        <div class="coverage-card">
+          <div class="coverage-icon">🔥</div>
+          <h3>Fire Damage</h3>
+          <p>Protection against fire damage, whether accidental or due to electrical faults.</p>
+        </div>
+        <div class="coverage-card">
+          <div class="coverage-icon">👥</div>
+          <h3>Third-Party Liability</h3>
+          <p>Coverage for damage to other vehicles or property. Includes legal expenses up to ₹15 lakhs.</p>
+        </div>
+        <div class="coverage-card">
+          <div class="coverage-icon">🏥</div>
+          <h3>Personal Accident</h3>
+          <p>Medical expenses and compensation for injuries sustained in an accident (Premium & Elite plans).</p>
+        </div>
+        <div class="coverage-card">
+          <div class="coverage-icon">🛞</div>
+          <h3>Roadside Assistance</h3>
+          <p>24/7 help for breakdowns, flat tires, dead batteries, and lockouts (Premium & Elite plans).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="comparison-section">
+      <h2>Plan Comparison</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Coverage</th>
+            <th>Basic</th>
+            <th>Premium</th>
+            <th>Elite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Third-party liability</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Theft protection</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Excess/Deductible</td>
+            <td>₹15,000 - ₹50,000</td>
+            <td>₹5,000</td>
+            <td>₹0 (Zero)</td>
+          </tr>
+          <tr>
+            <td>Personal accident cover</td>
+            <td><span class="cross">✗</span></td>
+            <td>₹5 Lakhs</td>
+            <td>₹25 Lakhs</td>
+          </tr>
+          <tr>
+            <td>Roadside assistance</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Windscreen protection</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Tire & rim protection</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Key replacement</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Personal belongings</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td>Up to ₹50,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Insurance FAQ</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What is an excess/deductible?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          The excess (or deductible) is the amount you pay out of pocket before insurance kicks in. For example, if you have a ₹10,000 excess and damage costs ₹25,000, you pay ₹10,000 and insurance covers ₹15,000. With Elite plan, you have zero excess – we cover everything.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What happens if I have an accident?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          1. Ensure everyone's safety and call emergency services if needed. 2. Call our 24/7 helpline immediately. 3. Take photos of the damage and accident scene. 4. Get details of other parties involved. 5. File a police report if required. 6. Our team will guide you through the claim process.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What is NOT covered by insurance?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Insurance does not cover: damage caused while driving under the influence of alcohol/drugs, damage from racing or reckless driving, damage to interiors due to smoking, loss of personal belongings (except Elite plan), damage caused by unauthorized drivers, or violations of rental agreement terms.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I use my own car insurance?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Personal car insurance typically does not cover rental vehicles. Some premium credit cards offer rental car insurance – check with your card provider. We recommend our insurance plans for comprehensive protection.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How do I upgrade my insurance?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          You can upgrade your insurance: 1. During the booking process on our website/app. 2. At the pickup location before starting your rental. 3. Contact customer support to upgrade mid-rental (prorated charges apply).
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h2>Ready to Book with Peace of Mind?</h2>
+      <p>All our vehicles come with Basic insurance included. Upgrade to Premium or Elite for complete worry-free driving.</p>
+      <div class="cta-buttons">
+        <a href="cars.html" class="btn-cta btn-cta-primary">Browse Cars</a>
+        <a href="footers/help.html" class="btn-cta btn-cta-secondary">Contact Support</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. | <a href="../index.html">Back to Home</a> | <a href="../footers/terms.html">Terms of Service</a></p>
+  </footer>
+
+  <script>
+    function toggleFaq(element) {
+      const faqItem = element.parentElement;
+      faqItem.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

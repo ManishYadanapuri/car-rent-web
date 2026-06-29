@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Special Offers - LuxRide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #0a0f1e;
+            color: #cbd5e1;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: rgba(10,15,30,0.95);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #2d3548;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-link { color: #cbd5e1; text-decoration: none; margin-left: 2rem; transition: 0.3s; }
+        .nav-link:hover { color: #6366f1; }
+        
+        .container { max-width: 1200px; margin: 150px auto 50px; padding: 0 20px; }
+        
+        h1 { font-size: 3rem; color: white; margin-bottom: 1rem; }
+        .subtitle { color: #94a3b8; margin-bottom: 3rem; font-size: 1.2rem; }
+
+        /* Hero Offer */
+        .hero-offer {
+            background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(236,72,153,0.2));
+            border: 1px solid rgba(99,102,241,0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .hero-offer h2 { color: white; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .timer { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; }
+        .timer-box { background: #1a1f35; padding: 0.5rem 1.5rem; border-radius: 10px; border: 1px solid #2d3548; }
+        .timer-num { color: #6366f1; font-size: 1.5rem; font-weight: bold; display: block; }
+        .timer-label { color: #94a3b8; font-size: 0.8rem; }
+
+        /* Coupon Grid */
+        .coupon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        
+        .coupon-card {
+            background: #1a1f35;
+            border: 1px dashed var(--border);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .coupon-card:hover { transform: translateY(-5px); border-color: #6366f1; }
+        
+        .coupon-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ef4444;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .coupon-code {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #2d3548;
+        }
+        .code-text { font-family: monospace; font-size: 1.2rem; color: #10b981; font-weight: bold; letter-spacing: 1px; }
+        .copy-btn { color: #6366f1; cursor: pointer; font-size: 0.9rem; text-decoration: underline; }
+        
+        .btn-main {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn-main:hover { opacity: 0.9; }
+        
+        @media(max-width: 768px) {
+            .hero-offer { padding: 2rem; }
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">LuxRide</a>
+    <div class="nav">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../footers/offers.html" class="nav-link">Offers</a>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Exclusive Offers</h1>
+    <p class="subtitle">Save big on your next rental with our active coupons.</p>
+
+    <!-- Featured Hero Deal -->
+    <div class="hero-offer">
+        <span style="color: #ec4899; font-weight: bold;">🔥 HOT DEAL OF THE DAY</span>
+        <h2>Luxury Weekend Getaway</h2>
+        <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto;">Book any luxury sedan for weekend outstation trips and get ₹2000 off instantly. Valid for 3 days or more.</p>
+        <div class="timer">
+            <div class="timer-box"><span class="timer-num">04</span><span class="timer-label">Days</span></div>
+            <div class="timer-box"><span class="timer-num">12</span><span class="timer-label">Hrs</span></div>
+            <div class="timer-box"><span class="timer-num">45</span><span class="timer-label">Mins</span></div>
+        </div>
+        <button class="btn-main" onclick="alert('Code applied automatically at checkout!')">Claim This Offer</button>
+    </div>
+
+    <h2 style="color:white; margin-bottom: 1.5rem;">Active Coupons</h2>
+    
+    <div class="coupon-grid">
+        <!-- Coupon 1 -->
+        <div class="coupon-card">
+            <div class="coupon-tag">NEW USER</div>
+            <h3 style="color:white">First Ride Discount</h3>
+            <p style="color:#94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Get flat ₹500 off on your first self-drive booking above ₹2000.</p>
+            
+            <div class="coupon-code">
+                <span class="code-text">FIRST500</span>
+                <span class="copy-btn" onclick="navigator.clipboard.writeText('FIRST500'); alert('Copied!')">Copy Code</span>
+            </div>
+            
+            <ul style="list-style:none; padding:0; margin-bottom:1.5rem; color:#cbd5e1; font-size: 0.9rem;">
+                <li>✅ Min spend: ₹2,000</li>
+                <li>❌ Not applicable on supercars</li>
+            </ul>
+            
+            <button class="btn-main">Use This Code</button>
+        </div>
+
+        <!-- Coupon 2 -->
+        <div class="coupon-card">
+            <div class="coupon-tag">WEEKEND</div>
+            <h3 style="color:white">Weekend Warrior</h3>
+            <p style="color:#94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">15% OFF on all SUV rentals booked between Friday and Sunday.</p>
+            
+            <div class="coupon-code">
+                <span class="code-text">WEEKEND15</span>
+                <span class="copy-btn" onclick="navigator.clipboard.writeText('WEEKEND15'); alert('Copied!')">Copy Code</span>
+            </div>
+            
+            <ul style="list-style:none; padding:0; margin-bottom:1.5rem; color:#cbd5e1; font-size: 0.9rem;">
+                <li>✅ Max discount: ₹1,500</li>
+                <li>✅ Applies to SUVs only</li>
+            </ul>
+            
+            <button class="btn-main">Use This Code</button>
+        </div>
+
+        <!-- Coupon 3 -->
+        <div class="coupon-card">
+            <div class="coupon-tag">CORPORATE</div>
+            <h3 style="color:white">Business Travel</h3>
+            <p style="color:#94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">10% Instant Discount on Monthly Rentals for corporate users.</p>
+            
+            <div class="coupon-code">
+                <span class="code-text">CORP10</span>
+                <span class="copy-btn" onclick="navigator.clipboard.writeText('CORP10'); alert('Copied!')">Copy Code</span>
+            </div>
+            
+            <ul style="list-style:none; padding:0; margin-bottom:1.5rem; color:#cbd5e1; font-size: 0.9rem;">
+                <li>✅ Requires GST invoice upload</li>
+                <li>✅ Minimum 1 month rental</li>
+            </ul>
+            
+            <button class="btn-main">Use This Code</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

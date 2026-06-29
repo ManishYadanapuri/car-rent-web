@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Book self-drive cars, cabs & chauffeur-driven rentals in Mumbai with LuxRide. Choose from 500+ cars including hatchbacks, sedans, SUVs, luxury cars & electric vehicles. Lowest prices, instant confirmation & 24/7 support.">
+  <meta name="keywords" content="car rental in Mumbai, self drive cars in Mumbai, Mumbai taxi rental, chauffeur driven cars in Mumbai, outstation taxi from Mumbai">
+  <meta property="og:title" content="LuxRide - Car Rental in Mumbai | Book Self Drive Cars & Cabs">
+  <title>LuxRide - Car Rental in Mumbai</title>
+  <!-- Font Awesome for professional icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="cars.css">
+</head>
+<body>  
+  <!-- Page Loader -->
+  <div class="page-loader" id="loader">
+    <div class="loader-content">
+      <div class="logo">LuxRide</div>
+      <div class="spinner"></div>
+      <p>Finding your perfect car...</p>
+    </div>
+  </div>
+
+  <!-- Sticky Header (Matches your SS2) -->
+  <header class="sticky-header">
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-left">
+          <div class="city-picker">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Mumbai</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <span class="help-line">
+            <i class="fa-solid fa-phone"></i> +91 95978 75871
+          </span>
+        </div>
+        <div class="top-bar-right">
+          <a href="#"><i class="fa-brands fa-whatsapp"></i> WhatsApp Support</a>
+          <a href="signinUP.html"><i class="fa-solid fa-user"></i> Login / Sign Up</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navbar -->
+    <div class="main-nav container">
+      <div class="logo">LuxRide</div>
+      <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="cars.html" class="active">Cars</a>
+        <a href="footers/cities.html">Cities</a>
+        <a href="footers/offers.html">Offers</a>
+        <a href="footers/help.html">Help</a>
+        <a href="footers/chauffeur.html">Chauffeur</a>
+        <a href="user/dashboard.php">Account</a>
+
+      </nav>
+      <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- Hero Section (Matches your SS2 with 30% blurred background) -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Book Car Rental in Mumbai</h1>
+      <p>Choose from 500+ self-drive cars, chauffeur-driven cabs & outstation taxi packages</p>
+
+      <!-- Main Search Form (Fixed layout, no overlapping) -->
+      <form class="hero-search-form" onsubmit="searchCars(event, 'home')">
+        <div class="search-input-group">
+          <label><i class="fa-solid fa-location-dot"></i> Pick-up Location</label>
+          <input type="text" placeholder="Enter city or airport" id="pickup" value="Mumbai" required>
+        </div>
+
+        <div class="search-input-group" id="return-location-group">
+          <label><i class="fa-solid fa-location-dot"></i> Return Location</label>
+          <input type="text" placeholder="Same as pick-up" id="return-location">
+        </div>
+
+        <div class="search-input-group" style="align-self: flex-end;">
+          <button type="submit" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i> Search Cars
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ── LIVE STATS BAR ── -->
+    <div class="hero-stats-bar">
+      <div class="hero-stat-card">
+        <span class="stat-icon">🚗</span>
+        <span class="stat-num loading" id="stat-available">—</span>
+        <span class="stat-label">Available Now</span>
+        <span class="stat-sub"><span class="sdot green"></span> Ready to book</span>
+      </div>
+      <div class="hero-stat-card">
+        <span class="stat-icon">🔑</span>
+        <span class="stat-num loading" id="stat-rented">—</span>
+        <span class="stat-label">Currently Rented</span>
+        <span class="stat-sub"><span class="sdot amber"></span> Out with customers</span>
+      </div>
+      <div class="hero-stat-card">
+        <span class="stat-icon">🔧</span>
+        <span class="stat-num loading" id="stat-servicing">—</span>
+        <span class="stat-label">In Servicing</span>
+        <span class="stat-sub"><span class="sdot red"></span> Back soon</span>
+      </div>
+      <div class="hero-stat-card">
+        <span class="stat-icon">🏆</span>
+        <span class="stat-num" style="font-size:1rem;color:#fff;">Most Booked</span>
+        <span class="best-car-name" id="stat-best-car">Loading...</span>
+        <span class="best-badge">⭐ TOP PICK THIS WEEK</span>
+      </div>
+      <div class="hero-stat-card">
+        <span class="stat-icon">⭐</span>
+        <span class="stat-num loading" id="stat-rating">—</span>
+        <span class="stat-label">Avg Rating</span>
+        <span class="stat-sub">from 10,400+ rides</span>
+      </div>
+    </div>
+    <div class="stats-refresh-hint" id="stats-refresh-hint">🔄 Fetching live data...</div>
+
+  </section>
+
+  <!-- Advanced Filters Section -->
+  <section class="advanced-filters">
+    <div class="container">
+      <div class="filter-header">
+        <h3>Filter Your Perfect Car</h3>
+        <div class="sort-by">
+          <label>Sort By:</label>
+          <select id="sort-select">
+            <option value="relevance">Relevance</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Rating: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filter-chips">
+        <button class="chip active" onclick="filterCars('all', this)">All Cars</button>
+        <button class="chip" onclick="filterCars('sedan', this)"><i class="fa-solid fa-car"></i> Sedans</button>
+        <button class="chip" onclick="filterCars('suv', this)"><i class="fa-solid fa-car-side"></i> SUVs</button>
+        <button class="chip" onclick="filterCars('luxury', this)"><i class="fa-solid fa-crown"></i> Luxury</button>
+        <button class="chip" onclick="filterCars('electric', this)"><i class="fa-solid fa-bolt"></i> Electric</button>
+        <button class="chip" onclick="filterCars('vintage', this)"><i class="fa-solid fa-car-rear"></i> Vintage</button>
+        <button class="chip" onclick="filterCars('sports', this)"><i class="fa-solid fa-car"></i> Sports</button>
+        <button class="chip" onclick="filterCars('supercar', this)"><i class="fa-solid fa-car-crash"></i> Supercars</button>
+        <button class="chip" onclick="filterCars('pickup', this)"><i class="fa-solid fa-truck"></i> Pickups</button>
+        <button class="chip" onclick="filterCars('offroad', this)"><i class="fa-solid fa-mountain-sun"></i> Offroad</button>
+        <button class="chip" onclick="filterCars('family', this)"><i class="fa-solid fa-users"></i> Family Cars</button>
+      </div>
+
+      <div class="extra-filters">
+        <div class="filter-group">
+          <label><i class="fa-solid fa-user-group"></i> Seating:</label>
+          <select id="seating-filter">
+            <option value="all">All</option>
+            <option value="2">2 Seater</option>
+            <option value="4">4 Seater</option>
+            <option value="5">5 Seater</option>
+            <option value="7">7+ Seater</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label><i class="fa-solid fa-gear"></i> Transmission:</label>
+          <select id="trans-filter">
+            <option value="all">All</option>
+            <option value="Auto">Automatic</option>
+            <option value="Manual">Manual</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label><i class="fa-solid fa-gas-pump"></i> Fuel:</label>
+          <select id="fuel-filter">
+            <option value="all">All</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Electric">Electric</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+    <div class="filter-group" style="align-self: flex-end;">
+          <button class="search-btn" onclick="searchCars(new Event('submit'), 'home')" type="button">
+            <i class="fa-solid fa-magnifying-glass"></i> Search Cars
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- All Cars Grid -->
+  <section class="featured" id="cars">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Full Car Fleet</h2>
+        <p>500+ cars for every need & budget</p>
+      </div>
+      <div class="cars-grid" id="cars-grid"></div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>Trusted by 100,000+ Happy Customers</h2>
+        <p>Real experiences from real travelers in Mumbai</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&background=random" alt="Rahul Sharma" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h5>Rahul Sharma</h5>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p>"Booked a Toyota Innova for my family trip to Lonavala. The car was in perfect condition, pickup was on time and the driver was very professional. Will definitely book again!"</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=random" alt="Priya Patel" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h5>Priya Patel</h5>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+            </div>
+          </div>
+          <p>"Self-driven Tesla Model 3 for my business meeting in Mumbai. Super smooth experience, app was easy to use and the car was fully charged. Great value for money!"</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://ui-avatars.com/api/?name=Arjun+Mehta&background=random" alt="Arjun Mehta" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h5>Arjun Mehta</h5>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p>"Daily rental of a Hyundai Creta for my daily commute. The pricing was very competitive and the support team was always available to help. Highly recommended!"</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://ui-avatars.com/api/?name=Anjali+Verma&background=random" alt="Anjali Verma" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h5>Anjali Verma</h5>
+              <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+            </div>
+          </div>
+          <p>"Chauffeur-driven Rolls Royce for my friend's wedding. The car was pristine, driver was punctual and the entire process was hassle-free. Perfect for special occasions!"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h2>Complete Your Booking</h2>
+      <div class="car-preview" id="modal-car-preview"></div>
+
+      <!-- Booking Type Selector -->
+      <div class="booking-type-selector">
+        <button class="type-btn active" onclick="setBookingType('self')">Self Drive</button>
+        <button class="type-btn" onclick="setBookingType('chauffeur')">Chauffeur Driven</button>
+      </div>
+
+      <form id="booking-form" onsubmit="completeBooking(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="bf-name" required>
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" id="bf-phone" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="bf-email" required>
+        </div>
+        <div class="form-group">
+          <label>Pickup Location</label>
+          <input type="text" id="bf-pickup" required value="Mumbai">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Pickup Date & Time</label>
+            <input type="datetime-local" id="bf-pickup-datetime" required>
+          </div>
+          <div class="form-group">
+            <label>Return Date & Time</label>
+            <input type="datetime-local" id="bf-return-datetime" required>
+          </div>
+        </div>
+
+        <!-- NEW: Rate Type and Duration Dropdowns -->
+        <div class="form-row rate-selector-group">
+          <div class="form-group">
+            <label>Select Rate Type</label>
+            <select id="bf-rate-type" onchange="updateDurationOptions(); updatePriceSummary();">
+              <option value="daily">Per Day</option>
+              <option value="hourly">Per Hour</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Duration</label>
+            <select id="bf-duration" onchange="updatePriceSummary();" required>
+              <!-- Options populated by JS -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Document Upload Section -->
+        <div class="form-group">
+          <label>Required Documents</label>
+          <div class="file-upload-group">
+            <div class="file-upload-box">
+              <input type="file" id="aadhar-card" accept="image/*" onchange="handleFileUpload(this, 'aadhar')" required>
+              <i class="fa-solid fa-id-card"></i>
+              <p>Aadhaar Card Photo</p>
+              <small>Click to upload or drag & drop</small>
+              <div class="file-name" id="aadhar-file-name"></div>
+            </div>
+            <div class="file-upload-box">
+              <input type="file" id="driving-license" accept="image/*" onchange="handleFileUpload(this, 'license')" required>
+              <i class="fa-solid fa-file-pdf"></i>
+              <p>Driving License Photo</p>
+              <small>Click to upload or drag & drop</small>
+              <div class="file-name" id="license-file-name"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Driver's License Number (for Self Drive)</label>
+          <input type="text" id="bf-dl" required>
+        </div>
+        
+        <div class="form-group tnc">
+          <input type="checkbox" id="bf-tnc" required>
+          <label for="bf-tnc">I agree to the Terms & Conditions and Privacy Policy</label>
+        </div>
+      </form>
+
+      <!-- Price Breakdown -->
+      <div class="price-breakdown" id="price-breakdown">
+        <h4>Rental Rates</h4>
+        <div class="rate-row">
+          <span>Base Hourly Rate:</span>
+          <span id="rate-hourly-base">₹0/hr</span>
+        </div>
+        <div class="rate-row">
+          <span>Base Daily Rate:</span>
+          <span id="rate-daily-base">₹0/day</span>
+        </div>
+        <!-- Monthly removed -->
+      </div>
+
+      <div class="price-summary" id="price-summary"></div>
+      <button class="btn-confirm" onclick="completeBooking()">✓ Confirm Booking</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✓</span>
+    <span id="toast-message">Booking confirmed!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">LuxRide</div>
+          <p>India's leading self-drive and chauffeur-driven car rental platform. Book cars across 50+ cities in India.</p>
+          <div class="social-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="footers/about.html">About Us</a></li>
+            <li><a href="footers/careers.html">Careers</a></li>
+            <li><a href="footers/press.html">Press</a></li>
+            <li><a href="footers/blog.html">Blog</a></li>
+            <li><a href="footers/franchise.html">Franchise</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="footers/selfdrive.html">Self Drive Cars</a></li>
+            <li><a href="footers/chauffeur.html">Chauffeur Driven Cars</a></li>
+            <li><a href="footers/outstation.html">Outstation Trips</a></li>
+            <li><a href="footers/monthly.html">Monthly Rentals</a></li>
+            <li><a href="footers/airport.html">Airport Transfers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-column">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="footers/help.html">Help Center</a></li>
+            <li><a href="footers/safety.html">Safety Guidelines</a></li>
+            <li><a href="footers/cancellation.html">Cancellation Policy</a></li>
+            <li><a href="footers/support.html">24/7 Support</a></li>
+            <li><a href="footers/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h4>Subscribe to Our Offers</h4>
+          <p>Get exclusive discounts and latest updates directly to your inbox</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <p>© 2026 LuxRide. All rights reserved.</p>
+        </div>
+        <div class="footer-bottom-right">
+          <a href="footers/terms.html">Terms of Service</a>
+          <a href="footers/privacy.html">Privacy Policy</a>
+          <a href="footers/cookies.html">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Car data with corrected brands
+    let cars        = []; // Will be loaded from DB
+    let wishlistIds = new Set(); // stores wishlisted car IDs
+    let compareList = [];        // stores cars selected for compare (max 3)
+
+async function loadCarsFromDB() {
+  try {
+    const response = await fetch('api/get_cars.php');
+    cars = await response.json();
+   // searchCars(new Event('submit'), 'home'); // Render cars after loading
+  } catch (error) {
+    console.error('Failed to load cars:', error);
+  }
+}
+
+// Call this at the bottom of your script instead of calling searchCars directly
+loadCarsFromDB();
+
+    // Global variables
+    let selectedCar = null;
+    let bookingType = 'self';
+    let currentRateType = 'daily'; // Default to daily
+    let currentDuration = 1; // Default duration
+    let uploadedFiles = { aadhar: null, license: null };
+
+    // Function to generate a booking ID
+    function generateBookingId() {
+        return 'LUX' + Math.random().toString(36).substring(2, 11).toUpperCase();
+    }
+
+    // NEW: Get hourly/daily base rates for ANY car
+    function getCarBaseRates(car) {
+      // Base hourly rate between 1k-2k
+      const hourlyRate = Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000;
+      // Base daily rate between 2k-5k
+      const dailyRate = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
+      
+      return { hourly: hourlyRate, daily: dailyRate };
+    }
+
+    // NEW: Calculate final charges based on selected rate type and duration
+    function calculateFinalRates() {
+      if (!selectedCar) return { total: 0, breakdown: {} };
+
+      const baseRates = getCarBaseRates(selectedCar);
+      let baseCharge = 0;
+      let driverChargePerUnit = 0; // Per hour or per day driver charge
+
+      if (currentRateType === 'hourly') {
+          baseCharge = baseRates.hourly * currentDuration;
+          driverChargePerUnit = 2000; // ₹2k/hr for driver
+      } else { // daily
+          baseCharge = baseRates.daily * currentDuration;
+          driverChargePerUnit = 4000; // ₹4k/day for driver
+      }
+
+      let driverTotalCharge = 0;
+      if (bookingType === 'chauffeur') {
+          driverTotalCharge = driverChargePerUnit * currentDuration;
+      }
+
+      let subtotal = baseCharge + driverTotalCharge;
+
+      // Discounts (keeping old logic for now, apply to subtotal before tax)
+      let discount = 0;
+      if (currentRateType === 'daily') {
+          if (currentDuration >= 7 && currentDuration < 30) discount = 0.10; // 10% for weekly
+          else if (currentDuration >= 30) discount = 0.15; // 15% for monthly-like duration
+      }
+      // No specific hourly duration discount mentioned, so applying only to daily for now.
+
+      const discountedAmount = subtotal * (1 - discount);
+      const gst = discountedAmount * 0.09;
+      const sgst = discountedAmount * 0.09;
+      const total = Math.round(discountedAmount + gst + sgst);
+
+      return {
+          hourlyBase: baseRates.hourly,
+          dailyBase: baseRates.daily,
+          baseCharge: baseCharge,
+          driverChargePerUnit: driverChargePerUnit,
+          driverTotalCharge: driverTotalCharge,
+          duration: currentDuration,
+          rateType: currentRateType,
+          discountAmount: subtotal * discount,
+          subtotal: subtotal,
+          discountedAmount: discountedAmount,
+          gst: gst,
+          sgst: sgst,
+          total: total
+      };
+    }
+
+    // Handle file uploads (unchanged)
+    function handleFileUpload(input, type) {
+      const file = input.files[0];
+      if (file) {
+        uploadedFiles[type] = file;
+        const fileNameElement = document.getElementById(`${type}-file-name`);
+        fileNameElement.textContent = file.name;
+        fileNameElement.style.display = 'block';
+      }
+    }
+
+    // Initialize on page load (unchanged)
+    window.onload = function () {
+      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1200);
+      renderCars();
+      setDefaultDates();
+      // Added event listener for new dropdowns
+      document.getElementById('bf-rate-type').addEventListener('change', () => {
+          updateDurationOptions();
+          updatePriceSummary();
+      });
+      document.getElementById('bf-duration').addEventListener('change', updatePriceSummary);
+    };
+
+    function setDefaultDates() {
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      
+      const formatDateTime = (date) => date.toISOString().slice(0,16);
+      
+      document.getElementById('pickup-date').value = formatDateTime(today);
+      document.getElementById('pickup-time').value = "10:00";
+      document.getElementById('return-date').value = formatDateTime(tomorrow);
+      document.getElementById('return-time').value = "10:00";
+    }
+
+    // Render car grid with new pricing (Hourly & Daily)
+    function renderCars(list = null) {
+      const grid = document.getElementById('cars-grid');
+      if (!grid) return;
+      
+      const data = list || (currentFilter === 'all' ? cars : cars.filter(c => c.type === currentFilter));
+      
+      grid.innerHTML = data.map(car => {
+        const rates = getCarBaseRates(car);
+        const badgeHtml = car.badge ? `<span class="car-badge badge-${car.badge}">${badgeLabel(car.badge)}</span>` : '';
+        
+        return `
+          <div class="car-card" data-type="${car.type}" data-seats="${car.seats}" data-transmission="${car.transmission}" data-fuel="${car.fuel}">
+            <div class="car-image-container">
+              <div class="car-badges">
+                ${badgeHtml}
+                <span class="car-badge">₹${rates.hourly.toLocaleString('en-IN')}/hr</span>
+              </div>
+
+              <div class="car-image-wrap">
+                <img src="${car.image}" alt="${car.brand} ${car.name}" loading="lazy">
+
+                <!-- Wishlist Heart Button -->
+                <button
+                  class="wishlist-btn ${wishlistIds.has(String(car.id)) ? 'wishlisted' : ''}"
+                  data-car-id="${car.id}"
+                  onclick="event.stopPropagation(); toggleWishlist(${car.id}, this)"
+                  title="${wishlistIds.has(String(car.id)) ? 'Remove from wishlist' : 'Save to wishlist'}">
+                  <i class="${wishlistIds.has(String(car.id)) ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                </button>
+
+                <!-- Compare Button -->
+                <button
+                  class="compare-check ${compareList.some(c => c.id === car.id) ? 'comparing' : ''}"
+                  onclick="event.stopPropagation(); handleCompare(${car.id})"
+                  title="Add to compare">
+                  <i class="fa-solid fa-scale-balanced"></i>
+                </button>
+              </div>
+
+              <div class="car-rating-overlay">
+                <i class="fa-solid fa-star"></i> ${car.rating.toFixed(1)}
+              </div>
+            </div>
+            <div class="car-details">
+              <div class="car-name-row">
+                <h4 class="car-title">${car.brand} ${car.name}</h4>
+                <span class="car-type">${capitalize(car.type)}</span>
+              </div>
+              <div class="car-specs">
+                <span class="spec"><i class="fa-solid fa-user-group"></i> ${car.seats} Seats</span>
+                <span class="spec"><i class="fa-solid fa-snowflake"></i> AC</span>
+                <span class="spec"><i class="fa-solid fa-gas-pump"></i> ${car.fuel}</span>
+                <span class="spec"><i class="fa-solid fa-gear"></i> ${car.transmission}</span>
+              </div>
+              <div class="car-price-row">
+                <div class="price-info">
+                  <span class="current-price">₹${rates.daily.toLocaleString('en-IN')}<span class="price-period">/day</span></span>
+                  <!-- Monthly price removed -->
+                </div>
+                <div class="car-actions">
+                  <button class="btn btn-book" onclick="openBooking(${car.id})">Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function badgeLabel(b) {
+      const labels = {
+        premium: 'Premium',
+        new: 'New',
+        sale: 'On Sale',
+        electric: 'Electric',
+        ultra: 'Ultra',
+        classic: 'Classic',
+        hybrid: 'Hybrid',
+        rare: 'Rare',
+        premiumcar: 'Premium'
+      };
+      return labels[b] || b;
+    }
+
+    function capitalize(str) { 
+      return str.charAt(0).toUpperCase() + str.slice(1); 
+    }
+
+    // Filter and search functions (unchanged, but now uses new rate functions)
+    function filterCars(type, btn) {
+      currentFilter = type;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      searchCars(new Event('submit'), 'home');
+    }
+
+    function switchTab(btn, type) {
+      document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      const returnLocGroup = document.getElementById('return-location-group');
+      if (type === 'monthly') { // This tab's logic remains, but monthly rate display is removed.
+        returnLocGroup.style.display = 'none';
+      } else {
+        returnLocGroup.style.display = 'block';
+        const returnInput = document.getElementById('return-location');
+        returnInput.placeholder = type === 'different' ? 'Enter return location' : 'Same as pick-up';
+      }
+    }
+
+    function searchCars(e, context) {
+      e.preventDefault();
+      // Removed min/max price from filter, as hourly/daily rates are now dynamic and within fixed ranges.
+      // If you still need price filtering, you'd need to add inputs for min/max hourly/daily prices.
+      const type = currentFilter || 'all'; 
+      const seating = document.getElementById('seating-filter')?.value || 'all';
+      const trans = document.getElementById('trans-filter')?.value || 'all';
+      const fuel = document.getElementById('fuel-filter')?.value || 'all';
+
+      let filtered = cars.filter(c => {
+        const typeMatch = type === 'all' ? true : c.type === type;
+        const seatingMatch = seating === 'all' ? true : 
+          seating === '2' ? c.seats === 2 :
+          seating === '4' ? c.seats === 4 :
+          seating === '5' ? c.seats === 5 :
+          seating === '7' ? c.seats >= 7 : true;
+        const transMatch = trans === 'all' ? true : c.transmission === trans;
+        const fuelMatch = fuel === 'all' ? true : c.fuel === fuel;
+        
+        return typeMatch && seatingMatch && transMatch && fuelMatch;
+      });
+
+      // Apply sorting
+      const sortBy = document.getElementById('sort-select').value;
+      if(sortBy === 'price-low') filtered.sort((a,b) => getCarBaseRates(a).daily - getCarBaseRates(b).daily);
+      else if(sortBy === 'price-high') filtered.sort((a,b) => getCarBaseRates(b).daily - getCarBaseRates(a).daily);
+      else if(sortBy === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+
+      renderCars(filtered);
+      document.getElementById('cars').scrollIntoView({ behavior: 'smooth' });
+      showToast(`Showing ${filtered.length} cars matching your search`);
+    }
+
+    // Booking modal functions
+    function setBookingType(type) {
+      bookingType = type;
+      document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      updatePriceSummary();
+    }
+
+    // Populate duration options based on rate type
+    function updateDurationOptions() {
+        const rateTypeSelect = document.getElementById('bf-rate-type');
+        const durationSelect = document.getElementById('bf-duration');
+        currentRateType = rateTypeSelect.value;
+        
+        durationSelect.innerHTML = ''; // Clear existing options
+
+        let maxDuration = 0;
+        let unit = '';
+
+        if (currentRateType === 'hourly') {
+            maxDuration = 24; // Max 24 hours
+            unit = 'hour(s)';
+        } else { // 'daily'
+            maxDuration = 30; // Max 30 days
+            unit = 'day(s)';
+        }
+
+        for (let i = 1; i <= maxDuration; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = `${i} ${unit}`;
+            durationSelect.appendChild(option);
+        }
+        currentDuration = parseInt(durationSelect.value); // Set current duration after populating
+    }
+
+    function openBooking(carId) {
+      selectedCar = cars.find(c => c.id === carId);
+      bookingType = 'self';
+      document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.type-btn:nth-child(1)').classList.add('active');
+
+      // Reset file uploads
+      uploadedFiles = { aadhar: null, license: null };
+      document.getElementById('aadhar-file-name').textContent = '';
+      document.getElementById('aadhar-file-name').style.display = 'none';
+      document.getElementById('driving-license').value = ''; // Clear file input value
+      document.getElementById('license-file-name').textContent = '';
+      document.getElementById('license-file-name').style.display = 'none';
+      document.getElementById('aadhar-card').value = ''; // Clear file input value
+
+      // Set default dates
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      
+      const formatDateTime = (date) => date.toISOString().slice(0,16);
+      document.getElementById('bf-pickup-datetime').value = formatDateTime(today);
+      document.getElementById('bf-return-datetime').value = formatDateTime(tomorrow);
+
+      // Initialize new rate type and duration dropdowns
+      document.getElementById('bf-rate-type').value = 'daily'; // Default to daily
+      updateDurationOptions(); // Populate duration for daily
+      currentDuration = parseInt(document.getElementById('bf-duration').value);
+
+      // Update car preview
+      const preview = document.getElementById('modal-car-preview');
+      const baseRates = getCarBaseRates(selectedCar);
+      preview.innerHTML = `
+        <img src="${selectedCar.image}" style="width:100px; height:75px; object-fit:cover; border-radius:8px; margin-right:1rem;">
+        <div>
+          <h3 style="margin:0;">${selectedCar.brand} ${selectedCar.name}</h3>
+          <p style="margin:0.25rem 0; color:var(--text-medium);">${capitalize(selectedCar.type)} | ${selectedCar.seats} Seats | ${selectedCar.transmission}</p>
+          <p style="margin:0; font-size:0.875rem; color:var(--primary-dark); font-weight:600;">
+            ₹${baseRates.hourly.toLocaleString('en-IN')}/hr | ₹${baseRates.daily.toLocaleString('en-IN')}/day
+          </p>
+        </div>
+      `;
+
+      updatePriceBreakdown();
+      updatePriceSummary();
+      document.getElementById('booking-modal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('booking-modal').classList.remove('active');
+    }
+
+    function updatePriceBreakdown() {
+      if (!selectedCar) return;
+      const baseRates = getCarBaseRates(selectedCar);
+      
+      document.getElementById('rate-hourly-base').textContent = `₹${baseRates.hourly.toLocaleString('en-IN')}/hr`;
+      document.getElementById('rate-daily-base').textContent = `₹${baseRates.daily.toLocaleString('en-IN')}/day`;
+      // Monthly removed from breakdown
+    }
+
+    function updatePriceSummary() {
+      if (!selectedCar) return;
+      
+      currentRateType = document.getElementById('bf-rate-type').value;
+      currentDuration = parseInt(document.getElementById('bf-duration').value);
+
+      const finalRates = calculateFinalRates();
+
+      const priceDiv = document.getElementById('price-summary');
+      priceDiv.innerHTML = `
+        <div class="price-row"><span>Base Rent (${finalRates.rateType === 'hourly' ? 'per hour' : 'per day'})</span><span>₹${finalRates.baseCharge.toLocaleString('en-IN')}</span></div>
+        ${finalRates.driverTotalCharge > 0 ? `<div class="price-row"><span>Driver Charge (${finalRates.rateType === 'hourly' ? 'per hour' : 'per day'})</span><span>₹${finalRates.driverTotalCharge.toLocaleString('en-IN')}</span></div>` : ''}
+        <div class="price-row"><span>Duration</span><span>${finalRates.duration} ${finalRates.rateType === 'hourly' ? 'hour(s)' : 'day(s)'}</span></div>
+        ${finalRates.discountAmount > 0 ? `<div class="price-row"><span>Discount</span><span>-₹${Math.round(finalRates.discountAmount).toLocaleString('en-IN')}</span></div>` : ''}
+        <div class="price-row"><span>Subtotal (before tax)</span><span>₹${Math.round(finalRates.discountedAmount).toLocaleString('en-IN')}</span></div>
+        <div class="price-row"><span>GST (9%)</span><span>₹${Math.round(finalRates.gst).toLocaleString('en-IN')}</span></div>
+        <div class="price-row"><span>SGST (9%)</span><span>₹${Math.round(finalRates.sgst).toLocaleString('en-IN')}</span></div>
+        <div class="price-row total"><span>Total Amount</span><span>₹${finalRates.total.toLocaleString('en-IN')}</span></div>
+      `;
+    }
+
+    // Removed direct event listener for bf-duration, now handled by updateDurationOptions
+    // document.getElementById('bf-duration').addEventListener('change', updatePriceSummary);
+
+    function completeBooking(e) {
+      if (e) e.preventDefault();
+      if (!selectedCar) return;
+
+      // Validate file uploads
+      if (!uploadedFiles.aadhar || !uploadedFiles.license) {
+        showToast('Please upload both Aadhaar card and Driving license');
+        return;
+      }
+
+      const name = document.getElementById('bf-name').value.trim();
+      const email = document.getElementById('bf-email').value.trim();
+      const phone = document.getElementById('bf-phone').value.trim();
+      const pickupLocation = document.getElementById('bf-pickup').value.trim();
+      const dl = document.getElementById('bf-dl').value.trim();
+      const tnc = document.getElementById('bf-tnc').checked;
+
+      if (!name || !email || !phone || !pickupLocation || !dl || !tnc) {
+        showToast('Please fill all required fields and accept T&C');
+        return;
+      }
+      
+      const finalRates = calculateFinalRates();
+      const bookingId = generateBookingId(); // Generate unique ID
+      const plate = 'MH-02-' + Math.floor(1000 + Math.random() * 9000); // Random plate for demo
+
+      const message = `LuxRide Booking Confirmed!
+Booking ID: ${bookingId}
+Car: ${selectedCar.brand} ${selectedCar.name}
+Plate: ${plate}
+Pickup Location: ${pickupLocation}
+Rate Type: ${finalRates.rateType === 'hourly' ? 'Per Hour' : 'Per Day'}
+Duration: ${finalRates.duration} ${finalRates.rateType === 'hourly' ? 'hour(s)' : 'day(s)'}
+Total Price: ₹${finalRates.total.toLocaleString('en-IN')}
+Booking Type: ${bookingType === 'self' ? 'Self Drive' : 'Chauffeur Driven'}
+Customer: ${name} (${phone})
+`;
+
+      showToast(`🎉 Booking ${bookingId} confirmed! Redirecting to payment...`);
+
+      closeModal();
+      document.getElementById('booking-form').reset();
+      uploadedFiles = { aadhar: null, license: null };
+
+      // ── SAVE BOOKING + DOCUMENTS TO DATABASE ─────────────
+      const rates = calculateFinalRates();
+
+      const formData = new FormData();
+      formData.append('booking_ref',     bookingId);
+      formData.append('car_id',          selectedCar.id);
+      formData.append('car_name',        selectedCar.name);
+      formData.append('car_brand',       selectedCar.brand);
+      formData.append('pickup_location', pickupLocation);
+      formData.append('rate_type',       rates.rateType);
+      formData.append('duration',        rates.duration);
+      formData.append('total_amount',    Math.round(rates.total));
+      formData.append('booking_type',    bookingType);
+      formData.append('cust_name',       name);
+      formData.append('cust_email',      email);
+      formData.append('cust_phone',      phone);
+      formData.append('dl_number',       dl);
+      formData.append('aadhar',          uploadedFiles.aadhar);
+      formData.append('license',         uploadedFiles.license);
+
+      fetch('api/create_booking.php', {
+        method: 'POST',
+        body: formData   // ← no Content-Type header, browser sets it automatically
+      })
+      .then(r => r.json())
+      .then(data => { console.log('Booking saved:', data.message); })
+      .catch(err => { console.warn('Booking DB save failed:', err); });
+
+      // ── REDIRECT TO PAYMENT ──────────────────────────────
+      setTimeout(() => {
+        const params = new URLSearchParams({
+          booking_id: bookingId,
+          car_name:   selectedCar.name,
+          car_brand:  selectedCar.brand,
+          car_image:  selectedCar.image,
+          car_type:   selectedCar.type,
+          total:      Math.round(rates.total),
+          base:       Math.round(rates.baseCharge),
+          gst:        Math.round(rates.gst),
+          sgst:       Math.round(rates.sgst),
+          duration:   rates.duration,
+          rate_type:  rates.rateType,
+          cust_name:  name,
+          cust_email: email,
+          cust_phone: phone
+        });
+        window.location.href = 'payment.php?' + params.toString();
+      }, 1200);
+    }
+
+    // Function to generate a demo plate (unchanged)
+    function demoPlate(car) {
+      const prefix = car.brand.slice(0,2).toUpperCase();
+      const num = Math.floor(1000 + Math.random()*9000);
+      return `${prefix}-09-${num}`;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.add('active');
+      setTimeout(() => toast.classList.remove('active'), 4000);
+    }
+
+    // Event listeners for filters
+   // document.getElementById('seating-filter').addEventListener('change', () => searchCars(new Event('submit'), 'home'));
+    //document.getElementById('trans-filter').addEventListener('change', () => searchCars(new Event('submit'), 'home'));
+    //document.getElementById('fuel-filter').addEventListener('change', () => searchCars(new Event('submit'), 'home'));
+    //document.getElementById('sort-select').addEventListener('change', () => searchCars(new Event('submit'), 'home'));
+
+    // Close modal on outside click
+    document.getElementById('booking-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        if (this.getAttribute('href') === 'cars.html') return;
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════
+    // WISHLIST
+    // ═══════════════════════════════════════════════════════
+
+    async function loadWishlist() {
+      try {
+        const res = await fetch('api/wishlist.php?action=list');
+        if (!res.ok) return;
+        const data = await res.json();
+        wishlistIds = new Set((data.car_ids || []).map(String));
+        renderCars(); // re-render to reflect heart states
+      } catch (e) {}
+    }
+
+    async function toggleWishlist(carId, btn) {
+      try {
+        const res = await fetch('api/wishlist.php?action=toggle', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ car_id: carId })
+        });
+        if (res.status === 401) {
+          showFeatureToast('Please login to save cars ❤️', 'info');
+          setTimeout(() => window.location.href = 'signinUP.html', 1200);
+          return;
+        }
+        const data = await res.json();
+        if (data.wishlisted) {
+          wishlistIds.add(String(carId));
+          btn.classList.add('wishlisted');
+          btn.title = 'Remove from wishlist';
+          btn.innerHTML = '<i class="fa-solid fa-heart"></i>';
+          showFeatureToast('Added to wishlist ❤️', 'success');
+        } else {
+          wishlistIds.delete(String(carId));
+          btn.classList.remove('wishlisted');
+          btn.title = 'Save to wishlist';
+          btn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+          showFeatureToast('Removed from wishlist', 'info');
+        }
+      } catch (e) {
+        showFeatureToast('Please login to use wishlist', 'error');
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // COMPARE
+    // ═══════════════════════════════════════════════════════
+
+    function handleCompare(carId) {
+      const car = cars.find(c => c.id === carId);
+      if (!car) return;
+      const idx = compareList.findIndex(c => c.id === carId);
+      if (idx >= 0) {
+        compareList.splice(idx, 1);
+        showFeatureToast('Removed from compare', 'info');
+      } else {
+        if (compareList.length >= 3) {
+          showFeatureToast('Max 3 cars can be compared at once', 'error');
+          return;
+        }
+        compareList.push(car);
+        showFeatureToast('Added to compare ⚖️', 'success');
+      }
+      updateCompareBar();
+      renderCars(); // re-render so compare button state updates
+    }
+
+    function updateCompareBar() {
+      let bar = document.getElementById('lux-compare-bar');
+      if (!bar) {
+        bar = document.createElement('div');
+        bar.id = 'lux-compare-bar';
+        bar.className = 'lux-compare-bar';
+        document.body.appendChild(bar);
+      }
+
+      if (compareList.length === 0) {
+        bar.classList.remove('visible');
+        return;
+      }
+      bar.classList.add('visible');
+
+      const carChips = compareList.map(c => `
+        <div class="cmp-chip">
+          <img src="${c.image}" onerror="this.src='https://via.placeholder.com/50x34?text=Car'" alt="${c.name}">
+          <span>${c.brand} ${c.name}</span>
+          <button class="cmp-chip-remove" onclick="handleCompare(${c.id})" title="Remove">✕</button>
+        </div>`).join('');
+
+      const emptySlots = compareList.length < 3
+        ? `<div class="cmp-empty-slot">+ Add car</div>` : '';
+
+      bar.innerHTML = `
+        <div class="cmp-bar-inner">
+          <div class="cmp-bar-cars">${carChips}${emptySlots}</div>
+          <div class="cmp-bar-actions">
+            <span class="cmp-count">${compareList.length}/3 selected</span>
+            <button class="cmp-btn-compare" onclick="openCompareModal()">
+              <i class="fa-solid fa-scale-balanced"></i> Compare Now
+            </button>
+            <button class="cmp-btn-clear" onclick="clearCompare()">Clear</button>
+          </div>
+        </div>`;
+    }
+
+    function clearCompare() {
+      compareList = [];
+      updateCompareBar();
+      renderCars();
+    }
+
+    function openCompareModal() {
+      if (compareList.length < 2) {
+        showFeatureToast('Select at least 2 cars to compare', 'error');
+        return;
+      }
+
+      const fields = [
+        { key: 'brand',        label: 'Brand' },
+        { key: 'type',         label: 'Category' },
+        { key: 'price',        label: 'Price / Day (₹)' },
+        { key: 'seats',        label: 'Seats' },
+        { key: 'transmission', label: 'Transmission' },
+        { key: 'fuel',         label: 'Fuel Type' },
+        { key: 'rating',       label: 'Rating' }
+      ];
+
+      const labelCol = `
+        <div class="cmp-label-col">
+          <div class="cmp-img-ph"></div>
+          <div class="cmp-car-title-ph">&nbsp;</div>
+          ${fields.map(f => `<div class="cmp-label">${f.label}</div>`).join('')}
+        </div>`;
+
+      const carCols = compareList.map(c => `
+        <div class="cmp-car-col">
+          <img src="${c.image}" onerror="this.src='https://via.placeholder.com/200x130?text=Car'" alt="${c.name}">
+          <div class="cmp-car-title">${c.brand} ${c.name}</div>
+          ${fields.map(f => {
+            let val = c[f.key] ?? '—';
+            if (f.key === 'price') val = '₹' + Number(val).toLocaleString('en-IN');
+            if (f.key === 'rating') val = '⭐ ' + val;
+            return `<div class="cmp-cell">${val}</div>`;
+          }).join('')}
+          <button class="cmp-book-btn" onclick="document.getElementById('lux-cmp-modal').remove(); openBooking(${c.id})">
+            Book Now
+          </button>
+        </div>`).join('');
+
+      const existing = document.getElementById('lux-cmp-modal');
+      if (existing) existing.remove();
+
+      const overlay = document.createElement('div');
+      overlay.id = 'lux-cmp-modal';
+      overlay.className = 'cmp-modal-overlay';
+      overlay.innerHTML = `
+        <div class="cmp-modal">
+          <div class="cmp-modal-header">
+            <h2><i class="fa-solid fa-scale-balanced"></i> Car Comparison</h2>
+            <button class="cmp-modal-close" onclick="document.getElementById('lux-cmp-modal').remove()">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="cmp-grid">
+            ${labelCol}
+            ${carCols}
+          </div>
+        </div>`;
+
+      overlay.addEventListener('click', e => {
+        if (e.target === overlay) overlay.remove();
+      });
+      document.body.appendChild(overlay);
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // FEATURE TOAST
+    // ═══════════════════════════════════════════════════════
+
+    function showFeatureToast(msg, type = 'success') {
+      let t = document.getElementById('lux-feature-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.id = 'lux-feature-toast';
+        t.className = 'lux-feature-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      t.className = `lux-feature-toast show ${type}`;
+      clearTimeout(t._timer);
+      t._timer = setTimeout(() => {
+        t.className = 'lux-feature-toast';
+      }, 3000);
+    }
+
+    // Load wishlist on page ready
+    document.addEventListener('DOMContentLoaded', loadWishlist);
+
+    // ── LIVE FLEET STATS ──────────────────────────────────────
+async function loadFleetStats() {
+  try {
+    const res  = await fetch('api/car_stats.php');
+    const data = await res.json();
+
+    animateCount('stat-available', data.available);
+    animateCount('stat-rented',    data.rented);
+    animateCount('stat-servicing', data.servicing);
+
+    document.getElementById('stat-rating').textContent   = data.avg_rating;
+    document.getElementById('stat-rating').classList.remove('loading');
+    document.getElementById('stat-best-car').textContent = data.best_car;
+
+    const now = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('stats-refresh-hint').textContent =
+      '🔄 Auto-refreshes every 60s · Last updated ' + now;
+
+  } catch (e) {
+    document.getElementById('stats-refresh-hint').textContent = 'Fleet data unavailable';
+  }
+}
+
+function animateCount(id, target) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('loading');
+  let current = 0;
+  const step  = Math.max(1, Math.ceil(target / 30));
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = current;
+    if (current >= target) clearInterval(timer);
+  }, 30);
+}
+
+// Run on load, repeat every 60 seconds
+document.addEventListener('DOMContentLoaded', () => {
+  loadFleetStats();
+  setInterval(loadFleetStats, 60000);
+});
+
+  </script>
+  <script src="features.js"></script>
+  <script src="cars.js"></script>
+  <script src="booking_validation.js"></script>
+</body>
+</html>

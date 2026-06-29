@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #6366f1; --secondary: #8b5cf6; --accent: #ec4899; --dark: #0f172a; --card: #1a1f35; --border: #2d3548; --text: #cbd5e1; --text-dark: #94a3b8; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text); text-decoration: none; margin-left: 2rem; }
+    .btn-home { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; }
+    
+    .page-hero { padding: 150px 5% 80px; text-align: center; background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.1)); }
+    .page-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.2rem; color: var(--text-dark); }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+    
+    /* Blog Grid */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+    .blog-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all 0.3s; }
+    .blog-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+    .blog-image { height: 200px; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+    .blog-content { padding: 1.5rem; }
+    .blog-category { color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .blog-card h3 { color: white; font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .blog-card p { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 1rem; }
+    .blog-meta { display: flex; justify-content: space-between; color: var(--text-dark); font-size: 0.85rem; }
+    .read-more { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .read-more:hover { text-decoration: underline; }
+    
+    /* Newsletter */
+    .newsletter { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; text-align: center; margin-top: 4rem; }
+    .newsletter h2 { color: white; margin-bottom: 1rem; }
+    .newsletter p { color: var(--text-dark); margin-bottom: 2rem; }
+    .newsletter-form { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .newsletter-form input { padding: 0.8rem 1.5rem; border-radius: 50px; border: 1px solid var(--border); background: var(--dark); color: var(--text); width: 300px; }
+    .newsletter-form button { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border: none; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600; cursor: pointer; }
+    
+    footer { background: var(--dark); padding: 2rem 5%; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+    footer p { color: var(--text-dark); }
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    @media (max-width: 768px) { nav { display: none; } .blog-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../cars.html">Cars</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>LuxRide Blog</h1>
+    <p>Tips, guides, and stories for the modern traveler</p>
+  </section>
+
+  <div class="container">
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-image">🚗</div>
+        <div class="blog-content">
+          <div class="blog-category">Travel Tips</div>
+          <h3>Top 10 Road Trips in India You Must Take in 2024</h3>
+          <p>Discover the most scenic and adventurous road trips across India, from Leh-Ladakh to the coastal beauty of Konkan.</p>
+          <div class="blog-meta">
+            <span>📅 Dec 10, 2024</span>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">⚡</div>
+        <div class="blog-content">
+          <div class="blog-category">Electric Vehicles</div>
+          <h3>Electric vs Petrol: Which Rental is Right for You?</h3>
+          <p>A comprehensive guide comparing electric and petrol rentals based on your trip type, budget, and environmental goals.</p>
+          <div class="blog-meta">
+            <span>📅 Dec 5, 2024</span>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">💍</div>
+        <div class="blog-content">
+          <div class="blog-category">Weddings</div>
+          <h3>Best Wedding Cars: Make Your Grand Entry Unforgettable</h3>
+          <p>From Rolls-Royce to vintage classics, find the perfect car to make your wedding day even more special.</p>
+          <div class="blog-meta">
+            <span>📅 Nov 28, 2024</span>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">🏔️</div>
+        <div class="blog-content">
+          <div class="blog-category">Adventure</div>
+          <h3>Off-Road Adventures: Choosing the Right SUV</h3>
+          <p>Planning an off-road trip? Here's your guide to selecting between Jeep Wrangler, Thar, and Land Cruiser.</p>
+          <div class="blog-meta">
+            <span>📅 Nov 20, 2024</span>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">💼</div>
+        <div class="blog-content">
+          <div class="blog-category">Business</div>
+          <h3>Impress Clients: Best Executive Cars for Business Travel</h3>
+          <p>Make a statement at your next business meeting with our curated selection of executive sedans and luxury vehicles.</p>
+          <div class="blog-meta">
+            <span>📅 Nov 15, 2024</span>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">🌿</div>
+        <div class="blog-content">
+          <div class="blog-category">Sustainability</div>
+          <h3>How LuxRide is Going Green: Our Sustainability Journey</h3>
+          <p>Learn about our commitment to reducing carbon emissions and expanding our eco-friendly vehicle fleet.</p>
+          <div class="blog-meta">
+            <span>📅 Nov 8, 2024</span>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter">
+      <h2>📬 Subscribe to Our Newsletter</h2>
+      <p>Get the latest travel tips, exclusive offers, and car rental guides delivered to your inbox.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter your email">
+        <button onclick="alert('Thank you for subscribing!')">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. | <a href="../index.html">Back to Home</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #6366f1; --secondary: #8b5cf6; --accent: #ec4899; --dark: #0f172a; --card: #1a1f35; --border: #2d3548; --text: #cbd5e1; --text-dark: #94a3b8; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text); text-decoration: none; margin-left: 2rem; }
+    .btn-home { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; }
+    
+    .page-hero { padding: 150px 5% 80px; text-align: center; background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.1)); }
+    .page-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.2rem; color: var(--text-dark); }
+    
+    .container { max-width: 1000px; margin: 0 auto; padding: 4rem 5%; }
+    
+    /* Press Contact */
+    .press-contact { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+    .press-contact div h3 { color: white; margin-bottom: 0.5rem; }
+    .press-contact div p { color: var(--text-dark); }
+    .press-contact a { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; }
+    
+    /* News Section */
+    .news-section h2 { font-size: 2rem; color: white; margin-bottom: 2rem; }
+    .news-card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 2rem; margin-bottom: 1.5rem; transition: all 0.3s; }
+    .news-card:hover { border-color: var(--primary); }
+    .news-date { color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .news-card h3 { color: white; font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .news-card p { color: var(--text-dark); margin-bottom: 1rem; }
+    .news-source { color: var(--text-dark); font-size: 0.9rem; }
+    .news-source span { color: var(--accent); }
+    
+    /* Media Kit */
+    .media-kit { background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2)); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; text-align: center; margin-top: 4rem; }
+    .media-kit h2 { color: white; margin-bottom: 1rem; }
+    .media-kit p { color: var(--text-dark); margin-bottom: 2rem; }
+    .media-kit a { background: white; color: var(--dark); padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; }
+    
+    footer { background: var(--dark); padding: 2rem 5%; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+    footer p { color: var(--text-dark); }
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    @media (max-width: 768px) { nav { display: none; } .press-contact { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../footers/about.html">About</a>
+      
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>Press & Media</h1>
+    <p>Latest news, press releases, and media resources</p>
+  </section>
+
+  <div class="container">
+    <!-- Press Contact -->
+    <div class="press-contact">
+      <div>
+        <h3>Media Inquiries</h3>
+        <p>For press inquiries, interviews, or media partnerships contact our PR team.</p>
+        <p>📧 press@luxride.com | 📞 +91 98765 43210</p>
+      </div>
+      <a href="mailto:press@luxride.com">Contact PR Team</a>
+    </div>
+
+    <!-- News -->
+    <div class="news-section">
+      <h2>In The News</h2>
+      
+      <div class="news-card">
+        <div class="news-date">December 15, 2024</div>
+        <h3>LuxRide Expands Electric Fleet with 100 New Tesla Vehicles</h3>
+        <p>LuxRide announces the addition of 100 Tesla Model 3 and Model Y vehicles to its fleet, marking the largest EV expansion in the Indian car rental industry. This move supports the company's commitment to sustainable luxury.</p>
+        <p class="news-source">Featured in <span>Economic Times</span></p>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">November 28, 2024</div>
+        <h3>LuxRide Reaches 50,000 Customer Milestone</h3>
+        <p>India's premium car rental service celebrates serving its 50,000th customer. The company has maintained a 4.9-star rating while expanding to 50+ cities across the country.</p>
+        <p class="news-source">Featured in <span>Business Standard</span></p>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">October 10, 2024</div>
+        <h3>LuxRide Named "Best Car Rental Service" at Travel Awards 2024</h3>
+        <p>LuxRide received the prestigious "Best Premium Car Rental Service" award at the India Travel Awards 2024, recognizing excellence in customer service and fleet quality.</p>
+        <p class="news-source">Featured in <span>Travel + Leisure India</span></p>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">August 22, 2024</div>
+        <h3>LuxRide Launches AI-Powered Booking Platform</h3>
+        <p>The company unveils its new AI-powered platform featuring personalized car recommendations, dynamic pricing, and instant approval – reducing booking time by 70%.</p>
+        <p class="news-source">Featured in <span>TechCrunch India</span></p>
+      </div>
+
+      <div class="news-card">
+        <div class="news-date">June 5, 2024</div>
+        <h3>LuxRide Partners with Taj Hotels for Luxury Travel Packages</h3>
+        <p>Strategic partnership announced between LuxRide and Taj Hotels, offering integrated luxury travel experiences combining premium stays with chauffeur-driven vehicles.</p>
+        <p class="news-source">Featured in <span>Forbes India</span></p>
+      </div>
+    </div>
+
+    <!-- Media Kit -->
+    <div class="media-kit">
+      <h2>📁 Media Kit</h2>
+      <p>Download our official logos, brand guidelines, executive photos, and company fact sheet.</p>
+      <a href="#" onclick="alert('Media kit download started!')">Download Media Kit</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. | <a href="../index.html">Back to Home</a></p>
+  </footer>
+</body>
+</html>

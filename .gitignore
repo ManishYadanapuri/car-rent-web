@@ -1,0 +1,8 @@
+# User uploaded documents (KYC files, license images)
+uploads/*
+!uploads/.gitkeep
+
+# Logs & system files
+*.log
+.DS_Store
+Thumbs.db

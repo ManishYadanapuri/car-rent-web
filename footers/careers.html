@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #6366f1; --secondary: #8b5cf6; --accent: #ec4899; --dark: #0f172a; --card: #1a1f35; --border: #2d3548; --text: #cbd5e1; --text-dark: #94a3b8; --success: #10b981; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text); text-decoration: none; margin-left: 2rem; font-weight: 500; }
+    .btn-home { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; }
+    
+    .page-hero { padding: 150px 5% 80px; text-align: center; background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.1)); }
+    .page-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.2rem; color: var(--text-dark); max-width: 600px; margin: 0 auto; }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+    
+    /* Benefits */
+    .benefits-section { margin-bottom: 5rem; }
+    .benefits-section h2 { text-align: center; font-size: 2.5rem; color: white; margin-bottom: 3rem; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .benefit-card { background: var(--card); border: 1px solid var(--border); padding: 2rem; border-radius: 15px; text-align: center; transition: all 0.3s; }
+    .benefit-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+    .benefit-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .benefit-card h3 { color: white; margin-bottom: 0.5rem; }
+    .benefit-card p { color: var(--text-dark); font-size: 0.95rem; }
+    
+    /* Job Listings */
+    .jobs-section h2 { text-align: center; font-size: 2.5rem; color: white; margin-bottom: 3rem; }
+    .job-card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 2rem; margin-bottom: 1.5rem; transition: all 0.3s; }
+    .job-card:hover { border-color: var(--primary); }
+    .job-header { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+    .job-title h3 { color: white; font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .job-meta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .job-meta span { background: var(--dark); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; color: var(--text-dark); }
+    .job-meta span.location { color: var(--primary); }
+    .job-meta span.type { color: var(--success); }
+    .job-description { color: var(--text-dark); margin-bottom: 1.5rem; }
+    .job-requirements h4 { color: white; margin-bottom: 0.5rem; font-size: 1rem; }
+    .job-requirements ul { color: var(--text-dark); margin-left: 1.5rem; margin-bottom: 1.5rem; }
+    .btn-apply { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border: none; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+    .btn-apply:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99,102,241,0.4); }
+    
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; text-align: center; margin-top: 4rem; }
+    .cta-section h2 { color: white; margin-bottom: 1rem; }
+    .cta-section p { color: var(--text-dark); margin-bottom: 2rem; }
+    .cta-section a { color: var(--primary); font-weight: 600; }
+    
+    footer { background: var(--dark); padding: 2rem 5%; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+    footer p { color: var(--text-dark); }
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    @media (max-width: 768px) { nav { display: none; } .job-header { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../footers/about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>Join Our Team</h1>
+    <p>Drive your career forward with India's leading premium car rental company</p>
+  </section>
+
+  <div class="container">
+    <!-- Benefits -->
+    <div class="benefits-section">
+      <h2>Why Work at LuxRide?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3>Competitive Salary</h3>
+          <p>Industry-leading compensation packages with performance bonuses</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🏥</div>
+          <h3>Health Benefits</h3>
+          <p>Comprehensive medical insurance for you and your family</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🚗</div>
+          <h3>Car Perks</h3>
+          <p>Free weekend rentals and employee discounts on all vehicles</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📚</div>
+          <h3>Learning & Growth</h3>
+          <p>Training programs, certifications, and career advancement</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🏠</div>
+          <h3>Flexible Work</h3>
+          <p>Hybrid work options for eligible positions</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎉</div>
+          <h3>Fun Culture</h3>
+          <p>Team events, celebrations, and a vibrant work environment</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Job Listings -->
+    <div class="jobs-section">
+      <h2>Open Positions</h2>
+      
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-title">
+            <h3>Senior Software Engineer</h3>
+            <div class="job-meta">
+              <span class="location">📍 Mumbai / Remote</span>
+              <span class="type">Full-time</span>
+              <span>💼 Engineering</span>
+            </div>
+          </div>
+        </div>
+        <p class="job-description">Join our tech team to build and scale our booking platform serving millions of customers. Work with cutting-edge technologies and shape the future of car rentals.</p>
+        <div class="job-requirements">
+          <h4>Requirements:</h4>
+          <ul>
+            <li>5+ years experience in full-stack development</li>
+            <li>Proficiency in React, Node.js, and cloud services</li>
+            <li>Experience with mobile app development is a plus</li>
+          </ul>
+        </div>
+        <button class="btn-apply" onclick="alert('Application submitted! We will contact you soon.')">Apply Now</button>
+      </div>
+
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-title">
+            <h3>Fleet Operations Manager</h3>
+            <div class="job-meta">
+              <span class="location">📍 Delhi NCR</span>
+              <span class="type">Full-time</span>
+              <span>💼 Operations</span>
+            </div>
+          </div>
+        </div>
+        <p class="job-description">Oversee our Delhi fleet operations, ensuring vehicle availability, maintenance schedules, and customer satisfaction across the region.</p>
+        <div class="job-requirements">
+          <h4>Requirements:</h4>
+          <ul>
+            <li>3+ years in fleet or logistics management</li>
+            <li>Strong organizational and leadership skills</li>
+            <li>Automotive industry knowledge preferred</li>
+          </ul>
+        </div>
+        <button class="btn-apply" onclick="alert('Application submitted! We will contact you soon.')">Apply Now</button>
+      </div>
+
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-title">
+            <h3>Customer Experience Executive</h3>
+            <div class="job-meta">
+              <span class="location">📍 Multiple Cities</span>
+              <span class="type">Full-time</span>
+              <span>💼 Customer Service</span>
+            </div>
+          </div>
+        </div>
+        <p class="job-description">Be the voice of LuxRide! Handle customer inquiries, assist with bookings, and ensure every customer has an exceptional experience.</p>
+        <div class="job-requirements">
+          <h4>Requirements:</h4>
+          <ul>
+            <li>1+ year in customer service or hospitality</li>
+            <li>Excellent communication skills in English & Hindi</li>
+            <li>Problem-solving mindset and empathy</li>
+          </ul>
+        </div>
+        <button class="btn-apply" onclick="alert('Application submitted! We will contact you soon.')">Apply Now</button>
+      </div>
+
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-title">
+            <h3>Digital Marketing Specialist</h3>
+            <div class="job-meta">
+              <span class="location">📍 Bangalore / Hybrid</span>
+              <span class="type">Full-time</span>
+              <span>💼 Marketing</span>
+            </div>
+          </div>
+        </div>
+        <p class="job-description">Drive our digital presence through creative campaigns, SEO, social media, and performance marketing to grow our customer base.</p>
+        <div class="job-requirements">
+          <h4>Requirements:</h4>
+          <ul>
+            <li>2+ years in digital marketing</li>
+            <li>Experience with Google Ads, Meta Ads, and analytics</li>
+            <li>Creative thinking and data-driven approach</li>
+          </ul>
+        </div>
+        <button class="btn-apply" onclick="alert('Application submitted! We will contact you soon.')">Apply Now</button>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>Don't See Your Role?</h2>
+      <p>We're always looking for talented individuals. Send your resume to <a href="mailto:careers@luxride.com">careers@luxride.com</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. | <a href="../index.html">Back to Home</a></p>
+  </footer>
+</body>
+</html>

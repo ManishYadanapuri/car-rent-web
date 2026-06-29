@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Policy - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #6366f1; --secondary: #8b5cf6; --accent: #ec4899; --dark: #0f172a; --card: #1a1f35; --border: #2d3548; --text: #cbd5e1; --text-dark: #94a3b8; --success: #10b981; --warning: #f59e0b; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); line-height: 1.8; }
+    
+    header { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text); text-decoration: none; margin-left: 2rem; }
+    .btn-home { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; }
+    
+    .page-hero { padding: 150px 5% 60px; text-align: center; background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.1)); }
+    .page-hero h1 { font-size: 3rem; color: white; margin-bottom: 0.5rem; }
+    .page-hero p { color: var(--text-dark); }
+    
+    .container { max-width: 900px; margin: 0 auto; padding: 3rem 5%; }
+    
+    .section { margin-bottom: 3rem; }
+    .section h2 { color: white; font-size: 1.8rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+    .section p { color: var(--text-dark); margin-bottom: 1rem; }
+    .section ul { color: var(--text-dark); margin-left: 1.5rem; margin-bottom: 1rem; }
+    .section li { margin-bottom: 0.5rem; }
+    
+    /* Cookie Types */
+    .cookie-grid { display: grid; gap: 1.5rem; margin: 2rem 0; }
+    .cookie-card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 1.5rem; }
+    .cookie-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .cookie-header h3 { color: white; display: flex; align-items: center; gap: 0.5rem; }
+    .cookie-badge { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+    .badge-essential { background: rgba(16,185,129,0.2); color: var(--success); }
+    .badge-optional { background: rgba(245,158,11,0.2); color: var(--warning); }
+    .cookie-card p { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.8rem; }
+    .cookie-examples { background: var(--dark); padding: 1rem; border-radius: 10px; margin-top: 1rem; }
+    .cookie-examples h4 { color: var(--text); font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .cookie-examples code { color: var(--primary); font-size: 0.85rem; }
+    
+    /* Toggle Switches */
+    .cookie-toggle { display: flex; align-items: center; gap: 0.5rem; }
+    .toggle-switch { position: relative; width: 50px; height: 26px; }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--dark); border-radius: 26px; transition: 0.3s; }
+    .toggle-slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
+    .toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+    .toggle-switch input:checked + .toggle-slider:before { transform: translateX(24px); }
+    .toggle-switch input:disabled + .toggle-slider { opacity: 0.6; cursor: not-allowed; }
+    
+    /* Settings Box */
+    .settings-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; margin: 3rem 0; }
+    .settings-box h2 { color: white; margin-bottom: 1.5rem; text-align: center; }
+    .settings-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    .settings-item:last-child { border-bottom: none; }
+    .settings-info h4 { color: white; margin-bottom: 0.3rem; }
+    .settings-info p { color: var(--text-dark); font-size: 0.9rem; }
+    .btn-save { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border: none; padding: 1rem 3rem; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; display: block; margin: 2rem auto 0; transition: all 0.3s; }
+    .btn-save:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99,102,241,0.4); }
+    
+    /* Browser Instructions */
+    .browser-section { margin: 3rem 0; }
+    .browser-section h2 { color: white; font-size: 1.8rem; margin-bottom: 1.5rem; }
+    .browser-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .browser-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.3s; }
+    .browser-card:hover { border-color: var(--primary); }
+    .browser-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    .browser-card h4 { color: white; margin-bottom: 0.5rem; }
+    .browser-card a { color: var(--primary); font-size: 0.9rem; text-decoration: none; }
+    .browser-card a:hover { text-decoration: underline; }
+    
+    footer { background: var(--dark); padding: 2rem 5%; text-align: center; border-top: 1px solid var(--border); }
+    footer p { color: var(--text-dark); }
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    @media (max-width: 768px) { nav { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../footers/privacy.html">Privacy</a>
+      
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>Cookie Policy</h1>
+    <p>Last updated: January 1, 2024</p>
+  </section>
+
+  <div class="container">
+    <div class="section">
+      <h2>What Are Cookies?</h2>
+      <p>Cookies are small text files that are stored on your device (computer, tablet, or mobile) when you visit a website. They help websites remember your preferences, understand how you use the site, and provide a better experience.</p>
+      <p>Cookies can be "session cookies" (deleted when you close your browser) or "persistent cookies" (remain on your device for a set period or until you delete them).</p>
+    </div>
+
+    <div class="section">
+      <h2>Types of Cookies We Use</h2>
+      
+      <div class="cookie-grid">
+        <div class="cookie-card">
+          <div class="cookie-header">
+            <h3>🔒 Essential Cookies</h3>
+            <span class="cookie-badge badge-essential">Required</span>
+          </div>
+          <p>These cookies are necessary for the website to function properly. They enable core features like security, account login, and booking functionality. You cannot opt out of these cookies.</p>
+          <div class="cookie-examples">
+            <h4>Examples:</h4>
+            <code>session_id, csrf_token, auth_token</code>
+          </div>
+        </div>
+
+        <div class="cookie-card">
+          <div class="cookie-header">
+            <h3>📊 Analytics Cookies</h3>
+            <span class="cookie-badge badge-optional">Optional</span>
+          </div>
+          <p>These cookies help us understand how visitors interact with our website by collecting anonymous information. This helps us improve our services and user experience.</p>
+          <div class="cookie-examples">
+            <h4>Examples:</h4>
+            <code>_ga, _gid, _gat (Google Analytics)</code>
+          </div>
+        </div>
+
+        <div class="cookie-card">
+          <div class="cookie-header">
+            <h3>🎯 Marketing Cookies</h3>
+            <span class="cookie-badge badge-optional">Optional</span>
+          </div>
+          <p>These cookies track your browsing habits to show you relevant advertisements. They may be set by our advertising partners and used to build a profile of your interests.</p>
+          <div class="cookie-examples">
+            <h4>Examples:</h4>
+            <code>_fbp, fr (Facebook), ads_prefs (Twitter)</code>
+          </div>
+        </div>
+
+        <div class="cookie-card">
+          <div class="cookie-header">
+            <h3>⚙️ Functional Cookies</h3>
+            <span class="cookie-badge badge-optional">Optional</span>
+          </div>
+          <p>These cookies remember your preferences and choices (like language or region) to provide a more personalized experience. They may also remember your login details.</p>
+          <div class="cookie-examples">
+            <h4>Examples:</h4>
+            <code>language_pref, currency, recent_searches</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookie Settings -->
+    <div class="settings-box">
+      <h2>🍪 Manage Your Cookie Preferences</h2>
+      
+      <div class="settings-item">
+        <div class="settings-info">
+          <h4>Essential Cookies</h4>
+          <p>Required for basic site functionality</p>
+        </div>
+        <div class="cookie-toggle">
+          <label class="toggle-switch">
+            <input type="checkbox" checked disabled>
+            <span class="toggle-slider"></span>
+          </label>
+          <span style="color: var(--text-dark); font-size: 0.85rem;">Always On</span>
+        </div>
+      </div>
+
+      <div class="settings-item">
+        <div class="settings-info">
+          <h4>Analytics Cookies</h4>
+          <p>Help us improve our website</p>
+        </div>
+        <div class="cookie-toggle">
+          <label class="toggle-switch">
+            <input type="checkbox" checked id="analytics-cookies">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-item">
+        <div class="settings-info">
+          <h4>Marketing Cookies</h4>
+          <p>Personalized ads and offers</p>
+        </div>
+        <div class="cookie-toggle">
+          <label class="toggle-switch">
+            <input type="checkbox" id="marketing-cookies">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-item">
+        <div class="settings-info">
+          <h4>Functional Cookies</h4>
+          <p>Remember your preferences</p>
+        </div>
+        <div class="cookie-toggle">
+          <label class="toggle-switch">
+            <input type="checkbox" checked id="functional-cookies">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <button class="btn-save" onclick="alert('Cookie preferences saved!')">Save Preferences</button>
+    </div>
+
+    <div class="section">
+      <h2>Third-Party Cookies</h2>
+      <p>Some cookies on our website are set by third-party services. These include:</p>
+      <ul>
+        <li><strong>Google Analytics:</strong> Website traffic analysis</li>
+        <li><strong>Google Maps:</strong> Location services for pickup/drop points</li>
+        <li><strong>Facebook Pixel:</strong> Ad performance measurement</li>
+        <li><strong>Razorpay/PayU:</strong> Secure payment processing</li>
+        <li><strong>Intercom:</strong> Customer support chat</li>
+      </ul>
+      <p>These third parties have their own privacy policies governing the use of cookies.</p>
+    </div>

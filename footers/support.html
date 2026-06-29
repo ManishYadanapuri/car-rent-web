@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24/7 Support - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #6366f1; --secondary: #8b5cf6; --accent: #ec4899; --dark: #0f172a; --card: #1a1f35; --border: #2d3548; --text: #cbd5e1; --text-dark: #94a3b8; --success: #10b981; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text); text-decoration: none; margin-left: 2rem; }
+    .btn-home { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; }
+    
+    .page-hero { padding: 150px 5% 80px; text-align: center; background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(99,102,241,0.1)); }
+    .page-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.2rem; color: var(--text-dark); }
+    .status-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16,185,129,0.2); color: var(--success); padding: 0.5rem 1rem; border-radius: 50px; margin-top: 1rem; }
+    .status-dot { width: 10px; height: 10px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    
+    .container { max-width: 1000px; margin: 0 auto; padding: 4rem 5%; }
+    
+    /* Contact Methods */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+    .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s; }
+    .contact-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+    .contact-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .contact-card h3 { color: white; margin-bottom: 0.5rem; }
+    .contact-card p { color: var(--text-dark); margin-bottom: 1rem; font-size: 0.95rem; }
+    .contact-card .contact-link { color: var(--primary); font-size: 1.3rem; font-weight: 600; text-decoration: none; }
+    .contact-card .availability { font-size: 0.85rem; color: var(--success); margin-top: 0.5rem; }
+    
+    /* Contact Form */
+    .form-section { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; margin: 4rem 0; }
+    .form-section h2 { color: white; text-align: center; margin-bottom: 2rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { color: var(--text); font-weight: 600; }
+    .form-group input, .form-group select, .form-group textarea { background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.8rem 1rem; border-radius: 10px; font-size: 1rem; font-family: inherit; }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--primary); outline: none; }
+    .btn-submit { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border: none; padding: 1rem 2rem; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem; transition: all 0.3s; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99,102,241,0.4); }
+    
+    /* FAQ Quick Links */
+    .quick-links { margin: 4rem 0; }
+    .quick-links h2 { color: white; text-align: center; margin-bottom: 2rem; }
+    .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .quick-link { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; text-decoration: none; color: var(--text); display: flex; align-items: center; gap: 0.8rem; transition: all 0.3s; }
+    .quick-link:hover { border-color: var(--primary); background: rgba(99,102,241,0.1); }
+    .quick-link span { font-size: 1.2rem; }
+    
+    footer { background: var(--dark); padding: 2rem 5%; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+    footer p { color: var(--text-dark); }
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    @media (max-width: 768px) { nav { display: none; } .form-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../footers/help.html">Help</a>
+     
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>24/7 Support</h1>
+    <p>We're always here to help, anytime, anywhere</p>
+    <div class="status-badge">
+      <div class="status-dot"></div>
+      <span>Support team online now</span>
+    </div>
+  </section>
+
+  <div class="container">
+    <!-- Contact Methods -->
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>Phone Support</h3>
+        <p>Speak directly with our support team for immediate assistance</p>
+        <a href="tel:+919876543210" class="contact-link">+91 98765 43210</a>
+        <p class="availability">✓ Available 24/7</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">💬</div>
+        <h3>WhatsApp</h3>
+        <p>Chat with us on WhatsApp for quick support</p>
+        <a href="https://wa.me/919876543210" class="contact-link" target="_blank">+91 98765 43210</a>
+        <p class="availability">✓ Instant responses</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <h3>Email Support</h3>
+        <p>Send us a detailed email and we'll get back to you</p>
+        <a href="mailto:support@luxride.com" class="contact-link">support@luxride.com</a>
+        <p class="availability">✓ Response within 4 hours</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">🚨</div>
+        <h3>Emergency Hotline</h3>
+        <p>For accidents, breakdowns, or urgent situations</p>
+        <a href="tel:1800XXXXXXX" class="contact-link">1800-XXX-XXXX</a>
+        <p class="availability">✓ Priority response 24/7</p>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="form-section">
+      <h2>Send Us a Message</h2>
+      <form onsubmit="event.preventDefault(); alert('Message sent! We will contact you shortly.');">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX">
+          </div>
+          <div class="form-group">
+            <label>Topic</label>
+            <select required>
+              <option value="">Select a topic</option>
+              <option>Booking Issue</option>
+              <option>Payment / Refund</option>
+              <option>Vehicle Problem</option>
+              <option>Cancellation</option>
+              <option>Feedback</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Booking ID (if applicable)</label>
+            <input type="text" placeholder="LUX-XXXXXX">
+          </div>
+          <div class="form-group">
+            <label>Priority</label>
+            <select>
+              <option>Normal</option>
+              <option>High</option>
+              <option>Urgent</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Message</label>
+            <textarea placeholder="Describe your issue or question in detail..." required></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+      <h2>Quick Help Links</h2>
+      <div class="links-grid">
+        <a href="../footers/help.html" class="quick-link"><span>❓</span> FAQ</a>
+        <a href="../footers/cancellation.html" class="quick-link"><span>🔄</span> Cancellation Policy</a>
+        <a href="../footers/insurance.html" class="quick-link"><span>🛡️</span> Insurance Info</a>
+        <a href="../footers/safety.html" class="quick-link"><span>⚠️</span> Safety Guidelines</a>
+        <a href="../footers/terms.html" class="quick-link"><span>📜</span> Terms of Service</a>
+        <a href="../footers/privacy.html" class="quick-link"><span>🔒</span> Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. | <a href="../index.html">Back to Home</a></p>
+  </footer>
+</body>
+</html>

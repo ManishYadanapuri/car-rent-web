@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancellation Policy - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #6366f1; --secondary: #8b5cf6; --accent: #ec4899; --dark: #0f172a; --card: #1a1f35; --border: #2d3548; --text: #cbd5e1; --text-dark: #94a3b8; --success: #10b981; --warning: #f59e0b; --danger: #ef4444; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text); text-decoration: none; margin-left: 2rem; }
+    .btn-home { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; }
+    
+    .page-hero { padding: 150px 5% 80px; text-align: center; background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.1)); }
+    .page-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.2rem; color: var(--text-dark); }
+    
+    .container { max-width: 900px; margin: 0 auto; padding: 4rem 5%; }
+    
+    /* Policy Cards */
+    .policy-grid { display: grid; gap: 1.5rem; margin-bottom: 4rem; }
+    .policy-card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 2rem; display: flex; gap: 1.5rem; align-items: start; }
+    .policy-card.green { border-left: 4px solid var(--success); }
+    .policy-card.yellow { border-left: 4px solid var(--warning); }
+    .policy-card.red { border-left: 4px solid var(--danger); }
+    .policy-icon { font-size: 2.5rem; flex-shrink: 0; }
+    .policy-content h3 { color: white; margin-bottom: 0.5rem; }
+    .policy-content p { color: var(--text-dark); }
+    .refund-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-top: 0.8rem; }
+    .refund-badge.full { background: rgba(16,185,129,0.2); color: var(--success); }
+    .refund-badge.partial { background: rgba(245,158,11,0.2); color: var(--warning); }
+    .refund-badge.none { background: rgba(239,68,68,0.2); color: var(--danger); }
+    
+    /* Timeline */
+    .timeline-visual { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; margin: 4rem 0; }
+    .timeline-visual h3 { color: white; text-align: center; margin-bottom: 2rem; }
+    .timeline-bar { display: flex; justify-content: space-between; position: relative; padding: 0 1rem; }
+    .timeline-bar::before { content: ''; position: absolute; top: 15px; left: 0; right: 0; height: 4px; background: linear-gradient(to right, var(--success), var(--warning), var(--danger)); border-radius: 2px; }
+    .timeline-point { text-align: center; position: relative; z-index: 1; }
+    .timeline-dot { width: 30px; height: 30px; border-radius: 50%; margin: 0 auto 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; }
+    .timeline-dot.green { background: var(--success); color: white; }
+    .timeline-dot.yellow { background: var(--warning); color: white; }
+    .timeline-dot.red { background: var(--danger); color: white; }
+    .timeline-label { font-size: 0.85rem; color: var(--text-dark); }
+    
+    /* How to Cancel */
+    .how-section { margin: 4rem 0; }
+    .how-section h2 { font-size: 2rem; color: white; margin-bottom: 2rem; }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .step-card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 1.5rem; text-align: center; }
+    .step-number { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin: 0 auto 1rem; }
+    .step-card h4 { color: white; margin-bottom: 0.5rem; }
+    .step-card p { color: var(--text-dark); font-size: 0.9rem; }
+    
+    /* Notes */
+    .notes-section { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 2rem; margin-top: 4rem; }
+    .notes-section h3 { color: white; margin-bottom: 1rem; }
+    .notes-section ul { color: var(--text-dark); margin-left: 1.5rem; }
+    .notes-section li { margin-bottom: 0.5rem; }
+    
+    footer { background: var(--dark); padding: 2rem 5%; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+    footer p { color: var(--text-dark); }
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    @media (max-width: 768px) { nav { display: none; } .policy-card { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../footers/help.html">Help</a>
+      
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>Cancellation Policy</h1>
+    <p>Flexible cancellation options for your peace of mind</p>
+  </section>
+
+  <div class="container">
+    <!-- Policy Cards -->
+    <div class="policy-grid">
+      <div class="policy-card green">
+        <div class="policy-icon">✅</div>
+        <div class="policy-content">
+          <h3>More than 48 hours before pickup</h3>
+          <p>Cancel your booking more than 48 hours before the scheduled pickup time and receive a complete refund. No questions asked.</p>
+          <span class="refund-badge full">100% Refund</span>
+        </div>
+      </div>
+
+      <div class="policy-card yellow">
+        <div class="policy-icon">⚠️</div>
+        <div class="policy-content">
+          <h3>24 to 48 hours before pickup</h3>
+          <p>Cancellations made between 24-48 hours before pickup will receive a partial refund. A small fee is retained for reservation costs.</p>
+          <span class="refund-badge partial">75% Refund</span>
+        </div>
+      </div>
+
+      <div class="policy-card yellow">
+        <div class="policy-icon">🕐</div>
+        <div class="policy-content">
+          <h3>Less than 24 hours before pickup</h3>
+          <p>Last-minute cancellations within 24 hours of pickup time will receive 50% refund. The remaining covers operational costs.</p>
+          <span class="refund-badge partial">50% Refund</span>
+        </div>
+      </div>
+
+      <div class="policy-card red">
+        <div class="policy-icon">❌</div>
+        <div class="policy-content">
+          <h3>No-show or after pickup time</h3>
+          <p>If you don't show up or cancel after the scheduled pickup time, unfortunately no refund can be provided.</p>
+          <span class="refund-badge none">No Refund</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline Visual -->
+    <div class="timeline-visual">
+      <h3>Refund Timeline at a Glance</h3>
+      <div class="timeline-bar">
+        <div class="timeline-point">
+          <div class="timeline-dot green">✓</div>
+          <div class="timeline-label">48+ hrs<br><strong>100%</strong></div>
+        </div>
+        <div class="timeline-point">
+          <div class="timeline-dot yellow">!</div>
+          <div class="timeline-label">24-48 hrs<br><strong>75%</strong></div>
+        </div>
+        <div class="timeline-point">
+          <div class="timeline-dot yellow">!</div>
+          <div class="timeline-label">&lt;24 hrs<br><strong>50%</strong></div>
+        </div>
+        <div class="timeline-point">
+          <div class="timeline-dot red">✕</div>
+          <div class="timeline-label">No-show<br><strong>0%</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to Cancel -->
+    <div class="how-section">
+      <h2>How to Cancel Your Booking</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4>Login</h4>
+          <p>Sign in to your LuxRide account on our website or app</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4>My Bookings</h4>
+          <p>Go to "My Bookings" and select the reservation to cancel</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4>Cancel</h4>
+          <p>Click "Cancel Booking" and confirm your cancellation</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h4>Refund</h4>
+          <p>Refund processed within 5-7 business days to original payment method</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="notes-section">
+      <h3>📋 Important Notes</h3>
+      <ul>
+        <li>All times are calculated based on the scheduled pickup time in local timezone.</li>
+        <li>Refunds are processed to the original payment method within 5-7 business days.</li>
+        <li>For bookings made with promotional codes or discounts, the discount value may be non-refundable.</li>
+        <li>Premium and supercar bookings may have different cancellation terms – check your booking confirmation.</li>
+        <li>In case of emergencies or exceptional circumstances, please contact our support team for assistance.</li>
+        <li>Modifications to booking dates/times may be available as an alternative to cancellation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. | <a href="../index.html">Back to Home</a> | <a href="../footers/help.html">Need Help?</a></p>
+  </footer>
+</body>
+</html>

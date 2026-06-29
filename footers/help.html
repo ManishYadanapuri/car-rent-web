@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #6366f1; --secondary: #8b5cf6; --accent: #ec4899; --dark: #0f172a; --card: #1a1f35; --border: #2d3548; --text: #cbd5e1; --text-dark: #94a3b8; --success: #10b981; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text); text-decoration: none; margin-left: 2rem; }
+    .btn-home { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; }
+    
+    .page-hero { padding: 150px 5% 80px; text-align: center; background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.1)); }
+    .page-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.2rem; color: var(--text-dark); }
+    
+    /* Search */
+    .search-box { max-width: 600px; margin: -30px auto 0; position: relative; z-index: 10; }
+    .search-box input { width: 100%; padding: 1rem 1.5rem; border-radius: 50px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 1rem; }
+    
+    .container { max-width: 1000px; margin: 0 auto; padding: 4rem 5%; }
+    
+    /* Categories */
+    .help-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+    .category-card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 1.5rem; text-align: center; transition: all 0.3s; cursor: pointer; }
+    .category-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+    .category-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .category-card h3 { color: white; font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .category-card p { color: var(--text-dark); font-size: 0.85rem; }
+    
+    /* FAQ */
+    .faq-section h2 { font-size: 2rem; color: white; margin-bottom: 2rem; }
+    .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+    .faq-question { padding: 1.2rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: white; font-weight: 600; }
+    .faq-question:hover { background: rgba(99,102,241,0.1); }
+    .faq-answer { padding: 0 1.5rem 1.2rem; color: var(--text-dark); display: none; }
+    .faq-item.active .faq-answer { display: block; }
+    .faq-item.active .faq-question { color: var(--primary); }
+    
+    /* Contact */
+    .contact-section { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; margin-top: 4rem; }
+    .contact-section h2 { color: white; text-align: center; margin-bottom: 2rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
+    .contact-item { padding: 1rem; }
+    .contact-item .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .contact-item h4 { color: white; margin-bottom: 0.5rem; }
+    .contact-item p { color: var(--text-dark); }
+    .contact-item a { color: var(--primary); text-decoration: none; }
+    
+    footer { background: var(--dark); padding: 2rem 5%; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+    footer p { color: var(--text-dark); }
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    @media (max-width: 768px) { nav { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../cars.html">Cars</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>Help Center</h1>
+    <p>Find answers to your questions and get support</p>
+  </section>
+
+  <div class="search-box">
+    <input type="text" placeholder="🔍 Search for help articles...">
+  </div>
+
+  <div class="container">
+    <!-- Categories -->
+    <div class="help-categories">
+      <div class="category-card">
+        <div class="category-icon">📝</div>
+        <h3>Bookings</h3>
+        <p>How to book, modify, or cancel</p>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">💳</div>
+        <h3>Payments</h3>
+        <p>Payment methods & refunds</p>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">🚗</div>
+        <h3>Vehicles</h3>
+        <p>Car features & availability</p>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">🛡️</div>
+        <h3>Insurance</h3>
+        <p>Coverage & claims</p>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">📍</div>
+        <h3>Pickup & Return</h3>
+        <p>Locations & procedures</p>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">⚠️</div>
+        <h3>Emergencies</h3>
+        <p>Accidents & breakdowns</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What documents do I need to rent a car?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          You need a valid driver's license (at least 1 year old), a government-issued ID (Aadhaar/Passport), and a credit/debit card for the security deposit. International customers need an International Driving Permit along with their home country license.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What is the minimum age to rent a car?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          The minimum age is 21 years for standard vehicles. For luxury and sports cars, the minimum age is 25 years. All drivers must have held a valid license for at least 1 year.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Is fuel included in the rental price?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Cars are provided with a full tank of fuel. You must return the vehicle with a full tank, otherwise refueling charges will apply. For electric vehicles, we provide charging recommendations and access to our partner charging stations.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I add an additional driver?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Yes, you can add additional drivers at the time of booking or pickup. Each additional driver must meet our age and license requirements. The fee is ₹500 per additional driver per day.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What happens if I return the car late?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          We offer a 30-minute grace period. After that, late fees apply: up to 2 hours late = 50% of daily rate; more than 2 hours = full additional day charge. Please contact us if you anticipate being late.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What is included in the insurance?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Basic insurance covers third-party liability and theft protection. Our Premium Insurance (optional) includes zero excess, personal accident cover, roadside assistance, and windscreen/tire damage. Visit our Insurance page for full details.
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-section">
+      <h2>Still Need Help?</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="icon">📞</div>
+          <h4>Call Us</h4>
+          <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+          <p>Available 24/7</p>
+        </div>
+        <div class="contact-item">
+          <div class="icon">💬</div>
+          <h4>WhatsApp</h4>
+          <p><a href="https://wa.me/919876543210">+91 98765 43210</a></p>
+          <p>Quick responses</p>
+        </div>
+        <div class="contact-item">
+          <div class="icon">✉️</div>
+          <h4>Email</h4>
+          <p><a href="mailto:support@luxride.com">support@luxride.com</a></p>
+          <p>Response within 24hrs</p>
+        </div>
+        <div class="contact-item">
+          <div class="icon">💻</div>
+          <h4>Live Chat</h4>
+          <p><a href="#" onclick="alert('Live chat coming soon!')">Start Chat</a></p>
+          <p>9 AM - 10 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. | <a href="../index.html">Back to Home</a></p>
+  </footer>
+
+  <script>
+    function toggleFaq(element) {
+      const faqItem = element.parentElement;
+      faqItem.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

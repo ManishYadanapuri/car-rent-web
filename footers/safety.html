@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safety Information - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #6366f1; --secondary: #8b5cf6; --accent: #ec4899; --dark: #0f172a; --card: #1a1f35; --border: #2d3548; --text: #cbd5e1; --text-dark: #94a3b8; --success: #10b981; --warning: #f59e0b; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text); text-decoration: none; margin-left: 2rem; }
+    .btn-home { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; }
+    
+    .page-hero { padding: 150px 5% 80px; text-align: center; background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(99,102,241,0.1)); }
+    .page-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.2rem; color: var(--text-dark); }
+    
+    .container { max-width: 1000px; margin: 0 auto; padding: 4rem 5%; }
+    
+    /* Safety Features */
+    .safety-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+    .safety-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s; }
+    .safety-card:hover { border-color: var(--success); }
+    .safety-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .safety-card h3 { color: white; margin-bottom: 0.8rem; }
+    .safety-card p { color: var(--text-dark); font-size: 0.95rem; }
+    
+    /* Guidelines */
+    .guidelines-section { margin: 4rem 0; }
+    .guidelines-section h2 { font-size: 2rem; color: white; margin-bottom: 2rem; }
+    .guideline-item { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 1.5rem; margin-bottom: 1rem; display: flex; gap: 1rem; align-items: start; }
+    .guideline-number { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+    .guideline-content h4 { color: white; margin-bottom: 0.3rem; }
+    .guideline-content p { color: var(--text-dark); font-size: 0.95rem; }
+    
+    /* Emergency */
+    .emergency-section { background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(236,72,153,0.1)); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 3rem; text-align: center; margin: 4rem 0; }
+    .emergency-section h2 { color: #ef4444; margin-bottom: 1rem; }
+    .emergency-section p { color: var(--text-dark); margin-bottom: 2rem; }
+    .emergency-numbers { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+    .emergency-item { background: var(--card); padding: 1.5rem 2rem; border-radius: 15px; }
+    .emergency-item h4 { color: white; }
+    .emergency-item p { color: var(--success); font-size: 1.5rem; font-weight: bold; }
+    
+    /* Checklist */
+    .checklist-section { margin: 4rem 0; }
+    .checklist-section h2 { font-size: 2rem; color: white; margin-bottom: 2rem; }
+    .checklist { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 2rem; }
+    .checklist-item { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); }
+    .checklist-item:last-child { border-bottom: none; }
+    .check-icon { color: var(--success); font-size: 1.2rem; }
+    .checklist-item span { color: var(--text-dark); }
+    
+    footer { background: var(--dark); padding: 2rem 5%; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+    footer p { color: var(--text-dark); }
+    footer a { color: var(--primary); text-decoration: none; }
+    
+    @media (max-width: 768px) { nav { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../footers/help.html">Help</a>
+     
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>Safety Information</h1>
+    <p>Your safety is our top priority. Drive with confidence.</p>
+  </section>
+
+  <div class="container">
+    <!-- Safety Features -->
+    <div class="safety-grid">
+      <div class="safety-card">
+        <div class="safety-icon">📡</div>
+        <h3>GPS Tracking</h3>
+        <p>All vehicles equipped with real-time GPS tracking for your security and assistance if needed.</p>
+      </div>
+      <div class="safety-card">
+        <div class="safety-icon">🛡️</div>
+        <h3>Full Insurance</h3>
+        <p>Comprehensive insurance coverage included with every rental. Optional premium coverage available.</p>
+      </div>
+      <div class="safety-card">
+        <div class="safety-icon">🔧</div>
+        <h3>Regular Maintenance</h3>
+        <p>Every vehicle undergoes rigorous 150-point inspection before each rental.</p>
+      </div>
+      <div class="safety-card">
+        <div class="safety-icon">🚨</div>
+        <h3>24/7 Roadside Assistance</h3>
+        <p>Emergency support available round the clock, anywhere in India.</p>
+      </div>
+      <div class="safety-card">
+        <div class="safety-icon">🧹</div>
+        <h3>Sanitized Vehicles</h3>
+        <p>Each car is thoroughly cleaned and sanitized using hospital-grade disinfectants.</p>
+      </div>
+      <div class="safety-card">
+        <div class="safety-icon">📱</div>
+        <h3>Emergency SOS</h3>
+        <p>One-tap SOS button in our app connects you directly to emergency services.</p>
+      </div>
+    </div>
+
+    <!-- Driving Guidelines -->
+    <div class="guidelines-section">
+      <h2>Safe Driving Guidelines</h2>
+      
+      <div class="guideline-item">
+        <div class="guideline-number">1</div>
+        <div class="guideline-content">
+          <h4>Familiarize Yourself with the Vehicle</h4>
+          <p>Before starting your journey, take time to understand the car's controls, mirrors, and safety features.</p>
+        </div>
+      </div>
+      
+      <div class="guideline-item">
+        <div class="guideline-number">2</div>
+        <div class="guideline-content">
+          <h4>Always Wear Your Seatbelt</h4>
+          <p>Ensure all passengers are buckled up before moving. It's the law and your first line of protection.</p>
+        </div>
+      </div>
+      
+      <div class="guideline-item">
+        <div class="guideline-number">3</div>
+        <div class="guideline-content">
+          <h4>Follow Speed Limits</h4>
+          <p>Adhere to posted speed limits and adjust speed according to weather and road conditions.</p>
+        </div>
+      </div>
+      
+      <div class="guideline-item">
+        <div class="guideline-number">4</div>
+        <div class="guideline-content">
+          <h4>No Drunk Driving</h4>
+          <p>Never operate a vehicle under the influence of alcohol or drugs. Zero tolerance policy applies.</p>
+        </div>
+      </div>
+      
+      <div class="guideline-item">
+        <div class="guideline-number">5</div>
+        <div class="guideline-content">
+          <h4>Avoid Distractions</h4>
+          <p>Keep your phone away while driving. Use hands-free devices for navigation and calls.</p>
+        </div>
+      </div>
+      
+      <div class="guideline-item">
+        <div class="guideline-number">6</div>
+        <div class="guideline-content">
+          <h4>Take Breaks on Long Drives</h4>
+          <p>Stop every 2-3 hours to rest. Fatigue is a major cause of accidents on highways.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emergency Section -->
+    <div class="emergency-section">
+      <h2>🚨 Emergency Contacts</h2>
+      <p>Save these numbers before your journey. Help is always just a call away.</p>
+      <div class="emergency-numbers">
+        <div class="emergency-item">
+          <h4>LuxRide Emergency</h4>
+          <p>1800-XXX-XXXX</p>
+        </div>
+        <div class="emergency-item">
+          <h4>Police</h4>
+          <p>100</p>
+        </div>
+        <div class="emergency-item">
+          <h4>Ambulance</h4>
+          <p>108</p>
+        </div>
+        <div class="emergency-item">
+          <h4>Road Assistance</h4>
+          <p>1033</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pre-Trip Checklist -->
+    <div class="checklist-section">
+      <h2>Pre-Trip Safety Checklist</h2>
+      <div class="checklist">
+        <div class="checklist-item"><span class="check-icon">✓</span><span>Check tire pressure and condition</span></div>
+        <div class="checklist-item"><span class="check-icon">✓</span><span>Verify all lights are working (headlights, indicators, brake lights)</span></div>
+        <div class="checklist-item"><span class="check-icon">✓</span><span>Adjust mirrors and seat position</span></div>
+        <div class="checklist-item"><span class="check-icon">✓</span><span>Ensure windshield wipers function properly</span></div>
+        <div class="checklist-item"><span class="check-icon">✓</span><span>Check fuel level or battery charge (for EVs)</span></div>
+        <div class="checklist-item"><span class="check-icon">✓</span><span>Locate spare tire, jack, and emergency kit</span></div>
+        <div class="checklist-item"><span class="check-icon">✓</span><span>Test horn and brakes</span></div>
+        <div class="checklist-item"><span class="check-icon">✓</span><span>Save emergency numbers on your phone</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. | <a href="../index.html">Back to Home</a></p>
+  </footer>
+</body>
+</html>

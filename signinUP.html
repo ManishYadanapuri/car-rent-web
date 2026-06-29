@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxRide - Authentication</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="signinUP.css">
+
+</head>
+
+<body>
+    <!-- Background Elements -->
+    <div class="auth-background"></div>
+    <div class="stars" id="stars"></div>
+    <div class="purple-wave"></div>
+
+    <!-- Logo -->
+    <div class="auth-logo">
+        <span class="logo-icon">✨</span>
+        LuxRide
+    </div>
+
+    <!-- Main Authentication Container -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Side Panel -->
+            <div class="auth-side">
+                <div class="auth-side-content">
+                    <div class="auth-side-image">
+                        <svg viewBox="0 0 400 250">
+                            <path
+                                d="M50 150 Q80 120 120 120 L150 90 Q200 70 250 90 L280 120 Q320 120 350 150 L380 150 Q370 170 350 170 L320 180 Q280 180 250 160 L150 160 Q120 180 80 180 L50 170 Q30 170 50 150 Z"
+                                fill="url(#carGradient2)" stroke="#fff" stroke-width="2" opacity="0.9" />
+
+                            <defs>
+                                <linearGradient id="carGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#6e45e2;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#88d3ce;stop-opacity:0.8" />
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Windows -->
+                            <path d="M120 120 L150 90 L200 90 L220 120 Z" fill="#fff" opacity="0.2" />
+                            <path d="M230 90 L250 90 L260 120 L220 120 Z" fill="#fff" opacity="0.2" />
+
+                            <!-- Wheels -->
+                            <circle cx="100" cy="150" r="20" fill="#2a2a3e" />
+                            <circle cx="300" cy="150" r="20" fill="#2a2a3e" />
+                            <circle cx="100" cy="150" r="8" fill="#ffd700" />
+                            <circle cx="300" cy="150" r="8" fill="#ffd700" />
+
+                            <!-- Headlights -->
+                            <circle cx="380" cy="130" r="8" fill="#ffd700" opacity="0.8" />
+                            <circle cx="50" cy="130" r="8" fill="#ff4e50" opacity="0.8" />
+                        </svg>
+                    </div>
+                    <h2>Join LuxRide</h2>
+                    <p>Unlock premium vehicles, exclusive offers, and seamless booking experiences.</p>
+                    <button class="toggle-btn" id="switchToRegister">Create Account</button>
+                </div>
+            </div>
+
+            <!-- Forms Panel -->
+            <div class="auth-forms">
+                <!-- Login Form -->
+                <div class="auth-form active" id="loginForm">
+                    <h3 class="form-title">Welcome Back</h3>
+                    <p class="form-subtitle">Sign in to access your account and bookings.</p>
+
+                    <form id="loginFormElement">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                            <span class="input-icon" id="toggleLoginPassword">👁️</span>
+                        </div>
+
+                        <div class="remember-forgot">
+                            <div class="remember-me">
+                                <input type="checkbox" id="rememberMe">
+                                <label for="rememberMe">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Sign In</button>
+                    </form>
+
+                    <div class="divider">
+                        <span>or continue with</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button class="social-btn">G</button>
+                        <button class="social-btn">🍎</button>
+                        <button class="social-btn">f</button>
+                    </div>
+
+                    <p class="register-link">Don't have an account? <a href="signinUP.html"
+                            id="switchToRegisterLink">Sign up</a>
+                    </p>
+                </div>
+
+                <!-- Register Form -->
+                <div class="auth-form" id="registerForm">
+                    <h3 class="form-title">Create Account</h3>
+                    <p class="form-subtitle">Join NebulaDrive to unlock premium vehicles.</p>
+
+                    <form id="registerFormElement">
+                        <div class="form-group">
+                            <label for="registerName">Full Name</label>
+                            <input type="text" id="registerName" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerEmail">Email Address</label>
+                            <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerPhone">Phone Number</label>
+                            <input type="tel" id="registerPhone" placeholder="Enter your phone number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" placeholder="Create a password">
+                            <span class="input-icon" id="toggleRegisterPassword">👁️</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">Confirm Password</label>
+                            <input type="password" id="registerConfirmPassword" placeholder="Confirm your password"
+                                required>
+                        </div>
+
+                        <div class="remember-me" style="margin-bottom: 25px;">
+                            <input type="checkbox" id="termsAgreement" required>
+                            <label for="termsAgreement">I agree to the <a href="footers/terms.html"
+                                    style="color: var(--accent);">Terms of Service</a> and <a
+                                    href="footers/privacy.html" style="color: var(--accent);">Privacy Policy</a></label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Create Account</button>
+                    </form>
+
+                    <div class="divider">
+                        <span>or sign up with</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button class="social-btn">G</button>
+                        <button class="social-btn">🍎</button>
+                        <button class="social-btn">f</button>
+                    </div>
+
+                    <p class="register-link">Already have an account? <a href="#" id="switchToLoginLink">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Toggle -->
+    <div class="form-toggle" id="mobileFormToggle">
+        <p class="active" id="mobileLoginTab">Sign In</p>
+        <p id="mobileRegisterTab">Sign Up</p>
+    </div>
+
+    <script>
+        // Generate stars for background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 80;
+
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                star.style.opacity = Math.random() * 0.8 + 0.2;
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Toggle between login and register forms
+        function setupFormToggle() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const switchToRegister = document.getElementById('switchToRegister');
+            const switchToRegisterLink = document.getElementById('switchToRegisterLink');
+            const switchToLoginLink = document.getElementById('switchToLoginLink');
+
+            // Mobile tabs
+            const mobileLoginTab = document.getElementById('mobileLoginTab');
+            const mobileRegisterTab = document.getElementById('mobileRegisterTab');
+
+            function showLoginForm() {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                if (window.innerWidth <= 992) {
+                    mobileLoginTab.classList.add('active');
+                    mobileRegisterTab.classList.remove('active');
+                }
+            }
+
+            function showRegisterForm() {
+                registerForm.classList.add('active');
+                loginForm.classList.remove('active');
+                if (window.innerWidth <= 992) {
+                    mobileRegisterTab.classList.add('active');
+                    mobileLoginTab.classList.remove('active');
+                }
+            }
+
+            // Desktop toggle
+            switchToRegister.addEventListener('click', showRegisterForm);
+            switchToRegisterLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showRegisterForm();
+            });
+            switchToLoginLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showLoginForm();
+            });
+
+            // Mobile tabs
+            mobileLoginTab.addEventListener('click', showLoginForm);
+            mobileRegisterTab.addEventListener('click', showRegisterForm);
+        }
+
+        // Toggle password visibility
+        function setupPasswordToggle() {
+            const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+            const loginPassword = document.getElementById('loginPassword');
+
+            const toggleRegisterPassword = document.getElementById('toggleRegisterPassword');
+            const registerPassword = document.getElementById('registerPassword');
+
+            if (toggleLoginPassword && loginPassword) {
+                toggleLoginPassword.addEventListener('click', () => {
+                    const type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+                    loginPassword.setAttribute('type', type);
+                    toggleLoginPassword.textContent = type === 'password' ? '👁️' : '🔒';
+                });
+            }
+
+            if (toggleRegisterPassword && registerPassword) {
+                toggleRegisterPassword.addEventListener('click', () => {
+                    const type = registerPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+                    registerPassword.setAttribute('type', type);
+                    toggleRegisterPassword.textContent = type === 'password' ? '👁️' : '🔒';
+                });
+            }
+        }
+
+        // Form validation
+        function setupFormValidation() {
+            const loginForm = document.getElementById('loginFormElement');
+            const registerForm = document.getElementById('registerFormElement');
+
+            // Login form validation
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+
+                    if (!email || !password) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+
+                    if (!validateEmail(email)) {
+                        alert('Please enter a valid email address');
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch('api/login.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ email, password })
+                        });
+
+                        let data;
+                        try {
+                            data = await response.json();
+                        } catch (e) {
+                            console.error("Failed to parse JSON", e);
+                            alert("Server error. Please try again.");
+                            return;
+                        }
+
+                        if (response.ok || data.status === "success") {
+                            // Force clear any old state first
+                            localStorage.removeItem("luxride_loggedin");
+                            
+                            // Save new login status
+                            localStorage.setItem("luxride_loggedin", "true");
+                            
+                            // Small delay to ensure localStorage is written before redirect
+                            setTimeout(() => {
+                                const redirect = new URLSearchParams(window.location.search).get('redirect');
+                                window.location.href = redirect || "index.html";
+                            }, 100);
+                        } else {
+                            alert(data.message || 'Login failed');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('An error occurred during login');
+                    }
+                });
+            }
+
+            // Register form validation
+            if (registerForm) {
+                registerForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    const name = document.getElementById('registerName').value;
+                    const email = document.getElementById('registerEmail').value;
+                    const phone = document.getElementById('registerPhone').value;
+                    const password = document.getElementById('registerPassword').value;
+                    const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+                    if (!name || !email || !password || !confirmPassword) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+
+                    if (!validateEmail(email)) {
+                        alert('Please enter a valid email address');
+                        return;
+                    }
+
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match');
+                        return;
+                    }
+
+                    if (password.length < 8) {
+                        alert('Password must be at least 8 characters long');
+                        return;
+                    }
+
+                    if (!document.getElementById('termsAgreement').checked) {
+                        alert('You must agree to the terms and conditions');
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch('api/register.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ name, email, phone, password })
+                        });
+
+                        const text = await response.text();
+                        console.log(text);
+                        const data = JSON.parse(text);
+
+                        if (response.ok) {
+                            // Force clear any old state first
+                            localStorage.removeItem("luxride_loggedin");
+                            
+                            // Save login status in localStorage
+                            localStorage.setItem("luxride_loggedin", "true");
+                            
+                            // Small delay before redirect
+                            setTimeout(() => {
+                                window.location.href = "user/dashboard.php";
+                            }, 100);
+                        } else {
+                            alert(data.message || 'Registration failed');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('An error occurred during registration');
+                    }
+                });
+            }
+
+            // Email validation helper
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            createStars();
+            setupFormToggle();
+            setupPasswordToggle();
+            setupFormValidation();
+
+            // Check for form toggle display on mobile
+            function checkMobileToggle() {
+                const mobileToggle = document.getElementById('mobileFormToggle');
+                if (window.innerWidth <= 992) {
+                    mobileToggle.style.display = 'flex';
+                } else {
+                    mobileToggle.style.display = 'none';
+                }
+            }
+
+            checkMobileToggle();
+            window.addEventListener('resize', checkMobileToggle);
+        });
+
+        // Redirect back to main site
+        function goToHome() {
+            // In a real application, this would redirect to your main site
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>

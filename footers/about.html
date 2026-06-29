@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --secondary: #8b5cf6;
+      --accent: #ec4899;
+      --dark: #0f172a;
+      --card: #1a1f35;
+      --border: #2d3548;
+      --text: #cbd5e1;
+      --text-dark: #94a3b8;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #0a0f1e;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 15, 30, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn-home {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Hero */
+    .page-hero {
+      padding: 150px 5% 80px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+    }
+
+    .page-hero h1 {
+      font-size: 3.5rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 5%;
+    }
+
+    .story-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+
+    .story-content h2 {
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .story-content h2 span {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .story-content p {
+      color: var(--text-dark);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .story-visual {
+      font-size: 12rem;
+      text-align: center;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Timeline */
+    .timeline-section {
+      margin: 5rem 0;
+    }
+
+    .timeline-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 3rem;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 0;
+      width: 50%;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(even) {
+      justify-content: flex-start;
+      margin-left: 50%;
+    }
+
+    .timeline-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 15px;
+      width: 90%;
+    }
+
+    .timeline-content h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content p {
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+
+    /* Team */
+    .team-section {
+      margin: 5rem 0;
+    }
+
+    .team-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 3rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+    }
+
+    .team-avatar {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(99,102,241,0.5);
+  box-shadow: 0 10px 30px rgba(99,102,241,0.3);
+}
+
+.team-card {
+  padding: 2.5rem 2rem;
+}
+
+.team-grid {
+  gap: 2.5rem;
+}
+
+/* Image inside avatar */
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* VERY IMPORTANT */
+}
+
+.team-avatar img {
+  transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-avatar img {
+  transform: scale(1.1);
+}
+
+    .team-card h3 {
+      color: white;
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .team-card .role {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .team-card p {
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .stat-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-box p {
+      color: var(--text-dark);
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      padding: 2rem 5%;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    footer p {
+      color: var(--text-dark);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .story-section {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 40px;
+        justify-content: flex-start;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../cars.html">Cars</a>
+      <a href="about.html">About</a>
+      <a href="../footers/help.html">Help</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <h1>About LuxRide</h1>
+    <p>Discover the story behind India's most trusted premium car rental service</p>
+  </section>
+
+  <div class="container">
+    <!-- Our Story -->
+    <div class="story-section">
+      <div class="story-content">
+        <h2>Our <span>Story</span></h2>
+        <p>Founded in 2015, LuxRide began with a simple yet powerful vision: to revolutionize the car rental experience
+          in India. What started as a small fleet of 10 luxury vehicles in Mumbai has grown into the nation's premier
+          premium car rental service.</p>
+        <p>Our founder, Arjun Verma, noticed a gap in the market – people wanted access to premium vehicles without the
+          hassle of ownership. From business executives needing a Mercedes for client meetings to couples dreaming of a
+          Ferrari for their wedding, everyone deserved a seamless experience.</p>
+        <p>Today, we operate across 50+ cities with a fleet of 500+ vehicles, ranging from elegant sedans to exotic
+          supercars. But our mission remains the same: making every journey memorable.</p>
+      </div>
+      <div class="story-visual"></div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-box">
+        <h3>500+</h3>
+        <p>Premium Vehicles</p>
+      </div>
+      <div class="stat-box">
+        <h3>50+</h3>
+        <p>Cities Covered</p>
+      </div>
+      <div class="stat-box">
+        <h3>50K+</h3>
+        <p>Happy Customers</p>
+      </div>
+      <div class="stat-box">
+        <h3>4.9★</h3>
+        <p>Average Rating</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-section">
+      <h2>Our Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2015 - The Beginning</h3>
+            <p>LuxRide founded in Mumbai with 10 luxury vehicles and a dream to transform car rentals.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2017 - Expansion</h3>
+            <p>Expanded to Delhi, Bangalore, and Pune. Fleet grew to 100 vehicles including supercars.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2019 - Tech Innovation</h3>
+            <p>Launched our mobile app with instant booking. Introduced GPS tracking in all vehicles.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2021 - Going Green</h3>
+            <p>Added 50+ electric and hybrid vehicles. Committed to sustainable luxury.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2023 - 50K Milestone</h3>
+            <p>Served our 50,000th customer. Expanded to 50+ cities across India.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2024 - Today</h3>
+            <p>500+ vehicles, 24/7 support, and India's highest-rated premium car rental service.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class="team-section">
+      <h2>Leadership Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="../img/team/manish.jpeg" alt="Manish">
+          </div>
+          <h3>Manish Yadanapuri</h3>
+          <p class="role">Founder & CEO</p>
+          <p>Former automotive executive with 15 years of experience. Passionate about making luxury accessible.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="../img/team/sajid.jpeg" alt="Sajid">
+          </div>
+          <h3>Sajid Chandanoor</h3>
+          <p class="role">Chief Operations Officer</p>
+          <p>Operations expert ensuring seamless experiences across all 50+ cities.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="../img/team/izhan.jpeg" alt="Izhan">
+          </div>
+          <h3>Izhan Khan</h3>
+          <p class="role">Head of Fleet</p>
+          <p>Automotive enthusiast managing our 500+ vehicle fleet with precision.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="../img/team/mateen.jpeg" alt="Mateen">
+          </div>
+          <h3>Mateen Sayyed</h3>
+          <p class="role">Chief Technology Officer</p>
+          <p>Tech innovator behind our seamless booking platform and mobile app.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="../img/team/mabood.jpeg" alt="Mabood">
+          </div>
+          <h3>Mabood Khan</h3>
+          <p class="role">Chief Marketing Officer</p>
+          <p>Brand strategist driving our growth and customer engagement across India.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="../img/team/khushey.jpeg" alt="Khushey">
+          </div>
+          <h3>Khushey Shetty</h3>
+          <p class="role">Head of Customer Experience</p>
+          <p>Customer service guru ensuring every LuxRide experience is exceptional.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. | <a href="../index.html">Back to Home</a></p>
+  </footer>
+</body>
+
+</html>

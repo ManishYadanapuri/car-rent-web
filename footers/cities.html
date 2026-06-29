@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cities - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --secondary: #8b5cf6;
+      --dark: #0f172a;
+      --card: #1a1f35;
+      --border: #2d3548;
+      --text: #cbd5e1;
+      --text-dark: #94a3b8;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: #0a0f1e; color: var(--text); }
+    header { position: fixed; top:0; width:100%; background: rgba(10,10,20,.9); padding: 1rem 5%; display:flex; justify-content:space-between; align-items:center; z-index: 1000; border-bottom:1px solid var(--border); }
+    .logo { font-size:1.8rem; font-weight:800; background: linear-gradient(135deg, var(--primary), var(--secondary)); background-clip:text; -webkit-background-clip:text; color: transparent; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 4rem 5%; }
+    .section-header { text-align: center; margin-bottom: 2rem; }
+    .section-header h2 { color: white; font-size: 2.5rem; }
+    .section-header p { color: var(--text-dark); }
+
+    .cities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .city-card { background: var(--card); border:1px solid var(--border); border-radius:14px; padding: 1.5rem; text-align:center; }
+    .city-emoji { font-size: 2.5rem; margin-bottom: .5rem; }
+    .city-name { font-weight: 700; color:white; font-size: 1.1rem; margin-bottom:.25rem; }
+    .city-desc { color: var(--text-dark); font-size: .95rem; }
+
+    .cta { display:inline-block; margin-top: 0.75rem; padding: .6rem 1.1rem; border-radius:999px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color:white; text-decoration:none; font-weight:600; }
+
+    footer { background:#0f172a; color:#94a3b8; padding: 2rem 5%; text-align:center; border-top:1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">LuxRide</a>
+    <nav>
+      <a href="../index.html" style="color:#cbd5e1; text-decoration:none;">Home</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="height:40vh; display:flex; align-items:center; justify-content:center; background:#0b1020;">
+    <div class="hero-content" style="text-align:center;">
+      <h1 style="color:white; font-size:3rem;">LuxRide Cities</h1>
+      <p style="color:#cbd5e1; font-size:1.15rem;">Premium car rentals across India’s top cities</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="section-header">
+      <h2>Our City Network</h2>
+      <p>LuxRide operates in major metros and beyond. Tap a city to explore availability.</p>
+    </div>
+
+    <div class="cities-grid">
+      <div class="city-card">
+        <div class="city-emoji" aria-label="Mumbai">🏙️</div>
+        <div class="city-name">Mumbai</div>
+        <div class="city-desc">Fleet across business districts and airports.</div>
+        <a class="cta" href="../cars.html">View Cars</a>
+      </div>
+
+      <div class="city-card">
+        <div class="city-emoji" aria-label="Delhi">🕌</div>
+        <div class="city-name">Delhi</div>
+        <div class="city-desc">Premium sedans and SUVs for corporate travel.</div>
+        <a class="cta" href="../cars.html">View Cars</a>
+      </div>
+
+      <div class="city-card">
+        <div class="city-emoji" aria-label="Bengaluru">🌆</div>
+        <div class="city-name">Bengaluru</div>
+        <div class="city-desc">Tech hub coverage with quick booking.</div>
+        <a class="cta" href="../cars.html">View Cars</a>
+      </div>
+
+      <div class="city-card">
+        <div class="city-emoji" aria-label="Pune">🏢</div>
+        <div class="city-name">Pune</div>
+        <div class="city-desc">Strategic locations for airport transfers and city rides.</div>
+        <a class="cta" href="../cars.html">View Cars</a>
+      </div>
+
+      <div class="city-card">
+        <div class="city-emoji" aria-label="Chennai">🏖️</div>
+        <div class="city-name">Chennai</div>
+        <div class="city-desc">Coastal city with luxury fleet options.</div>
+        <a class="cta" href="../cars.html">View Cars</a>
+      </div>
+
+      <div class="city-card">
+        <div class="city-emoji" aria-label="Hyderabad">🏙️</div>
+        <div class="city-name">Hyderabad</div>
+        <div class="city-desc">Balanced mix of exec sedans and SUVs.</div>
+        <a class="cta" href="../cars.html">View Cars</a>
+      </div>
+
+      <div class="city-card">
+        <div class="city-emoji" aria-label="Goa">🏖️</div>
+        <div class="city-name">Goa</div>
+        <div class="city-desc">Hassle-free holiday travel with premium cars.</div>
+        <a class="cta" href="../cars.html">View Cars</a>
+      </div>
+
+      <div class="city-card">
+        <div class="city-emoji" aria-label="Kolkata">🎡</div>
+        <div class="city-name">Kolkata</div>
+        <div class="city-desc">City tours and business trips made easy.</div>
+        <a class="cta" href="../cars.html">View Cars</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 LuxRide. All rights reserved. <a href="../index.html" style="color:#fff;text-decoration:none;">Back to Home</a></p>
+  </footer>
+</body>
+</html>

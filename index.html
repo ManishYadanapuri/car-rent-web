@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Check if user is logged in
+    if (!localStorage.getItem("luxride_loggedin")) {
+      window.location.href = "signinUP.html";
+    }
+  </script>
+  <title>LuxRide - Premium Car Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="premium.css">
+</head>
+
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-scene">
+
+      <div class="speed-lines">
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+      </div>
+
+      <div class="car-svg-wrap">
+        <svg width="280" height="110" viewBox="0 0 280 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="140" cy="99" rx="118" ry="5" fill="rgba(124,58,237,0.12)" />
+          <path
+            d="M12 80 L12 72 Q12 66 20 66 L44 66 L58 48 Q66 34 82 30 L148 28 Q168 28 178 36 L206 66 L256 66 Q266 66 268 72 L268 82 Q268 86 264 86 L16 86 Q12 86 12 80 Z"
+            fill="rgba(124,58,237,0.13)" stroke="#a78bfa" stroke-width="1.8" stroke-linejoin="round" />
+          <path d="M68 64 L82 38 Q90 26 106 24 L162 23 Q176 23 184 32 L200 64 Z" fill="rgba(124,58,237,0.2)"
+            stroke="#8b5cf6" stroke-width="1.5" stroke-linejoin="round" />
+          <path d="M78 62 L92 32 Q97 25 108 24 L136 24 L136 62 Z" fill="rgba(167,139,250,0.13)" stroke="#7c3aed"
+            stroke-width="1.1" />
+          <path d="M140 62 L140 24 L160 24 Q171 24 178 33 L192 62 Z" fill="rgba(167,139,250,0.13)" stroke="#7c3aed"
+            stroke-width="1.1" />
+          <line x1="136" y1="24" x2="136" y2="64" stroke="#7c3aed" stroke-width="1.2" />
+          <line x1="140" y1="24" x2="140" y2="64" stroke="#7c3aed" stroke-width="1.2" />
+          <path d="M44 66 Q52 58 68 54 L68 64" fill="none" stroke="#7c3aed" stroke-width="1" opacity="0.7" />
+          <rect x="60" y="80" width="160" height="5" rx="2" fill="rgba(124,58,237,0.25)" stroke="#7c3aed"
+            stroke-width="0.8" />
+          <rect x="194" y="20" width="14" height="3" rx="1.5" fill="rgba(167,139,250,0.3)" stroke="#a78bfa"
+            stroke-width="1" />
+          <line x1="200" y1="23" x2="198" y2="30" stroke="#a78bfa" stroke-width="1" />
+          <path d="M252 64 L268 64 L268 72 L256 72 Z" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="1.5"
+            class="headlight-glow" />
+          <line x1="252" y1="67" x2="266" y2="67" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"
+            class="headlight-glow" />
+          <line x1="269" y1="65" x2="279" y2="60" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="round"
+            class="headlight-glow" />
+          <line x1="269" y1="68" x2="280" y2="67" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="round"
+            class="headlight-glow" />
+          <line x1="269" y1="71" x2="279" y2="75" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="round"
+            class="headlight-glow" />
+          <rect x="12" y="64" width="4" height="16" rx="2" fill="rgba(239,68,68,0.5)" stroke="#ef4444"
+            stroke-width="1" />
+          <rect x="12" y="67" width="4" height="4" rx="1" fill="rgba(239,68,68,0.9)" />
+          <path d="M256 84 L272 84 L274 87 L254 87 Z" fill="rgba(124,58,237,0.3)" stroke="#7c3aed" stroke-width="0.8" />
+          <path d="M12 82 L20 82 L18 87 L10 87 Z" fill="rgba(124,58,237,0.3)" stroke="#7c3aed" stroke-width="0.8" />
+          <ellipse cx="20" cy="88" rx="4" ry="2.5" fill="#0f0820" stroke="#7c3aed" stroke-width="1" />
+          <ellipse cx="28" cy="88" rx="4" ry="2.5" fill="#0f0820" stroke="#7c3aed" stroke-width="1" />
+          <circle cx="10" cy="87" r="3" fill="rgba(167,139,250,0.15)" style="animation: puff1 1s ease-out infinite;" />
+          <circle cx="4" cy="85" r="2" fill="rgba(167,139,250,0.10)"
+            style="animation: puff1 1s ease-out infinite 0.35s;" />
+          <g style="transform-origin: 208px 86px; animation: spin 0.38s linear infinite;">
+            <circle cx="208" cy="86" r="20" fill="#0a0618" stroke="#a78bfa" stroke-width="2" />
+            <circle cx="208" cy="86" r="14" fill="none" stroke="#7c3aed" stroke-width="1.2" />
+            <line x1="208" y1="72" x2="208" y2="100" stroke="#8b5cf6" stroke-width="1.5" />
+            <line x1="194" y1="86" x2="222" y2="86" stroke="#8b5cf6" stroke-width="1.5" />
+            <line x1="197" y1="75" x2="219" y2="97" stroke="#8b5cf6" stroke-width="1.5" />
+            <line x1="219" y1="75" x2="197" y2="97" stroke="#8b5cf6" stroke-width="1.5" />
+            <circle cx="208" cy="86" r="4" fill="#a78bfa" />
+            <circle cx="208" cy="86" r="2" fill="#0a0618" />
+          </g>
+          <path d="M186 66 Q186 62 208 62 Q230 62 230 66" fill="none" stroke="#a78bfa" stroke-width="1.2" />
+          <g style="transform-origin: 72px 86px; animation: spin 0.38s linear infinite;">
+            <circle cx="72" cy="86" r="20" fill="#0a0618" stroke="#a78bfa" stroke-width="2" />
+            <circle cx="72" cy="86" r="14" fill="none" stroke="#7c3aed" stroke-width="1.2" />
+            <line x1="72" y1="72" x2="72" y2="100" stroke="#8b5cf6" stroke-width="1.5" />
+            <line x1="58" y1="86" x2="86" y2="86" stroke="#8b5cf6" stroke-width="1.5" />
+            <line x1="61" y1="75" x2="83" y2="97" stroke="#8b5cf6" stroke-width="1.5" />
+            <line x1="83" y1="75" x2="61" y2="97" stroke="#8b5cf6" stroke-width="1.5" />
+            <circle cx="72" cy="86" r="4" fill="#a78bfa" />
+            <circle cx="72" cy="86" r="2" fill="#0a0618" />
+          </g>
+          <path d="M50 66 Q50 62 72 62 Q94 62 94 66" fill="none" stroke="#a78bfa" stroke-width="1.2" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+
+
+      <!-- Header -->
+      <header id="header">
+        <div class="logo">LuxRide</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="cars.html">Cars</a>
+          <a href="#features">Features</a>
+          <a href="footers/about.html">About</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="user/dashboard.php">Account</a>
+
+          <!--<a href="signinUP.html"><button class="btn-neon">Sign In</button></a>
+          <button onclick="logout()" class="btn-neon">Logout</button> -->
+
+        </nav>
+      </header>
+
+      <!-- Hero -->
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <h1>Drive Your <span>Dreams</span> Today</h1>
+          <p>Experience luxury at your fingertips. Premium cars, unbeatable prices, and seamless booking for every
+            journey.
+          </p>
+          <a class="btn-neon" href="cars.html">Explore Cars </a>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-number" data-target="500">0</div>
+              <div class="stat-label">Premium Cars</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-target="50000">0</div>
+              <div class="stat-label">Happy Riders</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-target="4.9" data-decimal="true">0</div>
+              <div class="stat-label">Rating</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about-section" id="about">
+        <div class="about-content">
+          <div class="section-header reveal">
+            <h2>About LuxRide</h2>
+            <p>Driving excellence since 2015</p>
+          </div>
+          <div class="about-hero">
+            <div class="about-text reveal-left">
+              <h2>Revolutionizing <span class="highlight">Car Rentals</span> One Journey at a Time</h2>
+              <p>Founded in 2015, LuxRide emerged from a simple vision: to transform the car rental experience from a
+                transaction into an adventure.</p>
+              <p>With over 500 premium vehicles across 50+ locations, we've served more than 50,000 satisfied customers.
+              </p>
+            </div>
+            <div class="about-visual reveal-right">
+              <img src="img/3Dcar2 (2).png" alt="3D Car" class="car-3d">
+            </div>
+          </div>
+
+          <div class="section-header reveal" style="margin-top:2rem;">
+            <h3>Our Branches</h3>
+          </div>
+          <div class="branches-grid">
+            <span class="stagger-item">Mumbai</span>
+            <span class="stagger-item">Bengaluru</span>
+            <span class="stagger-item">Delhi</span>
+            <span class="stagger-item">Pune</span>
+            <span class="stagger-item">Hyderabad</span>
+            <span class="stagger-item">Chennai</span>
+            <span class="stagger-item">Kolkata</span>
+            <span class="stagger-item">Ahmedabad</span>
+            <span class="stagger-item">Jaipur</span>
+            <span class="stagger-item">Chandigarh</span>
+            <span class="stagger-item">Surat</span>
+            <span class="stagger-item">Vadodara</span>
+            <span class="stagger-item">Indore</span>
+            <span class="stagger-item">Lucknow</span>
+            <span class="stagger-item">Noida</span>
+            <span class="stagger-item">Gurugram</span>
+            <span class="stagger-item">Goa</span>
+            <span class="stagger-item">Kochi</span>
+            <span class="stagger-item">Bhopal</span>
+            <span class="stagger-item">Nagpur</span>
+          </div>
+
+          <div class="stats-section reveal-scale">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <h3 class="counter" data-target="500">0</h3>
+                <p>Premium Vehicles</p>
+              </div>
+              <div class="stat-item">
+                <h3 class="counter" data-target="50">0</h3>
+                <p>Locations</p>
+              </div>
+              <div class="stat-item">
+                <h3 class="counter" data-target="50000">0</h3>
+                <p>Happy Customers</p>
+              </div>
+              <div class="stat-item">
+                <h3 class="counter" data-target="4.9" data-decimal="true">0</h3>
+                <p>Customer Rating</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-header reveal" style="margin-top: 2rem;">
+            <h2>Our Core Values</h2>
+          </div>
+          <div class="values-grid">
+            <div class="value-card stagger-item">
+              <div class="value-icon"></div>
+              <h3>Customer First</h3>
+              <p>Every decision starts with you.</p>
+            </div>
+            <div class="value-card stagger-item">
+              <div class="value-icon"></div>
+              <h3>Innovation</h3>
+              <p>AI-powered booking and eco-friendly fleet.</p>
+            </div>
+            <div class="value-card stagger-item">
+              <div class="value-icon"></div>
+              <h3>Integrity</h3>
+              <p>No hidden fees, transparent pricing.</p>
+            </div>
+            <div class="value-card stagger-item">
+              <div class="value-icon"></div>
+              <h3>Sustainability</h3>
+              <p>Electric and hybrid options growing fast.</p>
+            </div>
+            <div class="value-card stagger-item">
+              <div class="value-icon"></div>
+              <h3>Excellence</h3>
+              <p>Top-notch maintenance & service.</p>
+            </div>
+            <div class="value-card stagger-item">
+              <div class="value-icon"></div>
+              <h3>Growth</h3>
+              <p>Always improving for you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommendations -->
+      <section class="recommendations">
+        <div class="section-header reveal">
+          <h2>Recommendations by Occasion</h2>
+        </div>
+        <div class="reco-grid">
+          <div class="reco-card stagger-item">
+            <h4>Family Trip</h4>
+            <p>Toyota Innova, Kia Carnival, Hyundai Palisade.</p>
+          </div>
+          <div class="reco-card stagger-item">
+            <h4>Couple Date</h4>
+            <p>Porsche 911, Audi R8, Jaguar F-Type.</p>
+          </div>
+          <div class="reco-card stagger-item">
+            <h4>Business Trip</h4>
+            <p>Mercedes E-Class, BMW 7 Series, Audi A4.</p>
+          </div>
+          <div class="reco-card stagger-item">
+            <h4>Off-road Adventure</h4>
+            <p>Jeep Wrangler, Land Cruiser, Defender.</p>
+          </div>
+          <div class="reco-card stagger-item">
+            <h4>Wedding</h4>
+            <p>Rolls-Royce Ghost, Bentayga, S-Class.</p>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- Features -->
+      <section class="features" id="features">
+        <div class="section-header reveal">
+          <h2>Why Choose LuxRide?</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card stagger-item">
+            <div class="feature-icon"> </div>
+            <h3>Instant Booking</h3>
+            <p>Book in seconds, no paperwork.</p>
+          </div>
+          <div class="feature-card stagger-item">
+            <div class="feature-icon"></div>
+            <h3>Full Insurance</h3>
+            <p>Comprehensive coverage included.</p>
+          </div>
+          <div class="feature-card stagger-item">
+            <div class="feature-icon"></div>
+            <h3>GPS Tracker</h3>
+            <p>All cars equipped with live GPS tracking.</p>
+          </div>
+          <div class="feature-card stagger-item">
+            <div class="feature-icon"></div>
+            <h3>Affordable Pricing</h3>
+            <p>Transparent rates, best value.</p>
+          </div>
+          <div class="feature-card stagger-item">
+            <div class="feature-icon"></div>
+            <h3>Eco Fleet</h3>
+            <p>Hybrid and electric options.</p>
+          </div>
+          <div class="feature-card stagger-item">
+            <div class="feature-icon"></div>
+            <h3>Flexible Plans</h3>
+            <p>Hourly to monthly rentals.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials-section" id="testimonials">
+        <div class="section-header reveal">
+          <h2>What Our Customers Say</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card stagger-item">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar"></div>
+              <div class="testimonial-info">
+                <h5>James Wilson</h5>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+            <p>"Absolutely amazing service! Booked a Tesla Model S for my business trip and the entire process was
+              seamless."</p>
+          </div>
+          <div class="testimonial-card stagger-item">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar"></div>
+              <div class="testimonial-info">
+                <h5>Lisa Martinez</h5>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+            <p>"The luxury fleet, transparent pricing, and 24/7 support made my vacation perfect!"</p>
+          </div>
+          <div class="testimonial-card stagger-item">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar"></div>
+              <div class="testimonial-info">
+                <h5>Robert Taylor</h5>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+            <p>"Range Rover for a mountain trip. Perfect condition and insurance gave peace of mind."</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="footer-content">
+          <div class="footer-brand reveal-left">
+            <div class="logo">LuxRide</div>
+            <p>Premium car rentals for the modern traveler.</p>
+          </div>
+          <div class="footer-links reveal">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="footers/about.html">→ About Us</a></li>
+              <li><a href="footers/careers.html">→ Careers</a></li>
+              <li><a href="footers/press.html">→ Press</a></li>
+              <li><a href="footers/blog.html">→ Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-links reveal">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="footers/help.html">→ Help Center</a></li>
+              <li><a href="footers/safety.html">→ Safety Info</a></li>
+              <li><a href="footers/cancellation.html">→ Cancellation</a></li>
+              <li><a href="footers/support.html">→ 24/7 Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-links reveal-right">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="footers/terms.html">→ Terms of Service</a></li>
+              <li><a href="footers/privacy.html">→ Privacy Policy</a></li>
+              <li><a href="footers/cookies.html">→ Cookie Policy</a></li>
+              <li><a href="footers/insurance.html">→ Insurance</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2024 LuxRide. All rights reserved. Drive in style. 🚗</p>
+        </div>
+      </footer>
+
+      <!-- Modal -->
+      <div class="modal-overlay" id="booking-modal">
+        <div class="modal">
+          <button class="modal-close" onclick="closeModal()">×</button>
+          <h2>Complete Your Booking</h2>
+          <div class="car-preview" id="modal-car-preview"></div>
+          <form id="booking-form">
+            <div class="form-group"><label>Full Name</label><input type="text" id="bf-name" placeholder="John Doe"
+                required>
+            </div>
+            <div class="form-group"><label>Email</label><input type="email" id="bf-email" placeholder="john@example.com"
+                required></div>
+            <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" id="bf-phone"
+                placeholder="+91 98765 43210" required></div>
+            <div class="form-group"><label>Address</label><input type="text" id="bf-address"
+                placeholder="Street, City, State" required></div>
+            <div class="form-group"><label>Driver's License Number</label><input type="text" id="bf-dl"
+                placeholder="DL-12345678" required></div>
+            <div class="form-group">
+              <label>Duration</label>
+              <select id="bf-duration">
+                <option value="1">1 day</option>
+                <option value="2">2 days</option>
+                <option value="7">1 week</option>
+                <option value="30">1 month</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" id="bf-tnc" required> <label for="bf-tnc">I agree to the Terms & Conditions</label>
+            </div>
+          </form>
+          <div class="price-summary" id="price-summary"></div>
+          <button class="btn-confirm" onclick="completeBooking()">✓ Confirm Booking</button>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span id="toast-message">Booking confirmed!</span>
+      </div>
+
+      <script>
+        /* ==================== */
+        /* SCROLL EFFECTS JS */
+        /* ==================== */
+
+        // Scroll Progress Bar
+        function updateScrollProgress() {
+          const scrollProgress = document.getElementById('scroll-progress');
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        // Header Scroll Effect
+        function handleHeaderScroll() {
+          const header = document.getElementById('header');
+          if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }
+
+        // Back to Top Button
+        function handleBackToTop() {
+          const backToTop = document.getElementById('back-to-top');
+          if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+          } else {
+            backToTop.classList.remove('visible');
+          }
+        }
+
+        function scrollToTop() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Reveal on Scroll (Intersection Observer)
+        function setupRevealAnimations() {
+          const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+              }
+            });
+          }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+          });
+
+          revealElements.forEach(el => observer.observe(el));
+        }
+
+        // Staggered Animations for Grid Items
+        function setupStaggerAnimations() {
+          const staggerContainers = document.querySelectorAll('.branches-grid, .values-grid, .reco-grid, .features-grid, .testimonials-grid, .cars-grid');
+
+          staggerContainers.forEach(container => {
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  const items = entry.target.querySelectorAll('.stagger-item, .car-card, .feature-card, .value-card, .reco-card, .testimonial-card');
+                  items.forEach((item, index) => {
+                    setTimeout(() => {
+                      item.classList.add('active');
+                      item.style.opacity = '1';
+                      item.style.transform = 'translateY(0)';
+                    }, index * 100);
+                  });
+                }
+              });
+            }, {
+              threshold: 0.1
+            });
+
+            observer.observe(container);
+          });
+        }
+
+        // Counter Animation
+        function animateCounters() {
+          const counters = document.querySelectorAll('.counter, .stat-number[data-target]');
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                entry.target.classList.add('counted');
+                const target = parseFloat(entry.target.getAttribute('data-target'));
+                const isDecimal = entry.target.getAttribute('data-decimal') === 'true';
+                const duration = 2000;
+                const startTime = performance.now();
+
+                function updateCounter(currentTime) {
+                  const elapsed = currentTime - startTime;
+                  const progress = Math.min(elapsed / duration, 1);
+                  const easeOut = 1 - Math.pow(1 - progress, 3);
+                  let current = target * easeOut;
+
+                  if (isDecimal) {
+                    entry.target.textContent = current.toFixed(1);
+                  } else {
+                    entry.target.textContent = Math.floor(current).toLocaleString() + (target >= 500 ? '+' : '');
+                  }
+
+                  if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                  }
+                }
+
+                requestAnimationFrame(updateCounter);
+              }
+            });
+          }, { threshold: 0.5 });
+
+          counters.forEach(counter => observer.observe(counter));
+        }
+
+        // Parallax Effect for Hero
+        function handleParallax() {
+          const hero = document.querySelector('.hero');
+          if (hero && window.innerWidth > 768) {
+            const scrolled = window.scrollY;
+            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+          }
+        }
+
+        // Combined Scroll Handler
+        function onScroll() {
+          updateScrollProgress();
+          handleHeaderScroll();
+          handleBackToTop();
+          handleParallax();
+        }
+
+        // Throttle function for performance
+        function throttle(func, limit) {
+          let inThrottle;
+          return function () {
+            if (!inThrottle) {
+              func.apply(this, arguments);
+              inThrottle = true;
+              setTimeout(() => inThrottle = false, limit);
+            }
+          }
+        }
+
+        /* ==================== */
+        /* ORIGINAL JS LOGIC */
+        /* ==================== */
+
+        const cars = [
+          { id: 1, name: "Model S Plaid", brand: "Tesla", type: "electric", price: 100, image: "img/electric/modelS.jpeg", badge: "new", rating: 4.9, seats: 5, transmission: "Auto", fuel: "Electric" },
+          { id: 2, name: "911 Carrera", brand: "Porsche", type: "luxury", price: 1009, image: "img/luxury/119.webp", badge: "premium", rating: 5.0, seats: 2, transmission: "PDK", fuel: "Petrol" },
+          { id: 3, name: "E-Class", brand: "Mercedes", type: "sedan", price: 149, image: "img/sedan/Eclass.jpeg", badge: "premium", rating: 4.8, seats: 5, transmission: "Auto", fuel: "Hybrid" },
+          { id: 4, name: "X5 M Sport", brand: "BMW", type: "suv", price: 179, image: "img/suv/x5.jpeg", badge: "", rating: 4.7, seats: 7, transmission: "Auto", fuel: "Diesel" },
+          { id: 5, name: "Urus", brand: "Lamborghini", type: "luxury", price: 599, image: "img/luxury/urus.webp", badge: "premium", rating: 5.0, seats: 5, transmission: "Auto", fuel: "Petrol" },
+          { id: 6, name: "Model 3", brand: "Tesla", type: "electric", price: 89, image: "img/electric/model3.jpeg", badge: "sale", rating: 4.6, seats: 5, transmission: "Auto", fuel: "Electric" },
+          { id: 7, name: "Range Rover", brand: " ", type: "suv", price: 249, image: "img/suv/rangerover.jpeg", badge: "premium", rating: 4.8, seats: 5, transmission: "Auto", fuel: "Diesel" },
+          { id: 8, name: "S-Class", brand: "Mercedes", type: "luxury", price: 449, image: "img/luxury/sclass.jpeg", badge: "premium", rating: 4.9, seats: 5, transmission: "Auto", fuel: "Hybrid" },
+        ];
+
+        function toInrPrice(car) {
+          const base = Math.round(car.price * 1200);
+          return Math.min(680000, Math.max(10000, base));
+        }
+
+        let currentFilter = 'all';
+
+        function renderCars(list = null) {
+          const grid = document.getElementById('cars-grid');
+          if (!grid) return;
+          const data = list || (currentFilter === 'all' ? cars : cars.filter(c => c.type === currentFilter));
+          grid.innerHTML = data.map((car, index) => {
+            const priceInr = toInrPrice(car).toLocaleString('en-IN');
+            const badge = car.badge ? `<span class="car-badge badge-${car.badge}">${badgeLabel(car.badge)}</span>` : '';
+            return `
+          <div class="car-card stagger-item" data-type="${car.type}" style="transition-delay: ${index * 0.1}s;">
+            <div class="car-image">
+              ${badge}
+              <img src="${car.image}" alt="${car.name}" loading="lazy">
+            </div>
+            <div class="car-info">
+              <div class="car-header">
+                <div class="car-name">
+                  <h3>${car.brand} ${car.name}</h3>
+                  <p>${capitalize(car.type)}</p>
+                </div>
+                <div class="car-rating">★ ${car.rating.toFixed(1)}</div>
+              </div>
+              <div class="car-features">
+                <span class="feature">👤 ${car.seats} seats</span>
+                <span class="feature">⚙️ ${car.transmission}</span>
+                <span class="feature">⛽ ${car.fuel}</span>
+              </div>
+              <div class="car-footer">
+                <div class="car-price"><span class="price">₹${priceInr}</span><span class="period">/day</span></div>
+                <button class="btn-book" onclick="window.location.href='cars.html'">Book Now</button>
+              </div>
+            </div>
+          </div>
+        `;
+          }).join('');
+
+          // Re-setup stagger animations after rendering
+          setTimeout(() => {
+            const carCards = document.querySelectorAll('.car-card');
+            carCards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add('active');
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, index * 100);
+            });
+          }, 100);
+        }
+
+        function badgeLabel(b) {
+          if (b === 'premium') return 'Premium';
+          if (b === 'new') return 'New';
+          if (b === 'sale') return 'On Sale';
+          return b;
+        }
+
+        function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+
+        function filterCars(type, btn) {
+          currentFilter = type;
+          document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+          btn.classList.add('active');
+          renderCars();
+        }
+
+        function showToast(msg) {
+          const toast = document.getElementById('toast');
+          document.getElementById('toast-message').textContent = msg;
+          toast.classList.add('active');
+          setTimeout(() => toast.classList.remove('active'), 4000);
+        }
+
+        // Background slider
+        const hero = document.querySelector(".hero");
+        const images = ["bgpic/bg1.webp", "bgpic/bg2.webp", "bgpic/bg3.webp", "bgpic/bg4.webp"];
+        let bgIndex = 0;
+
+        function changeBackground() {
+          if (hero) {
+            hero.style.backgroundImage = `url(${images[bgIndex]})`;
+            bgIndex = (bgIndex + 1) % images.length;
+          }
+        }
+
+        function closeModal() {
+          document.getElementById('booking-modal').classList.remove('active');
+        }
+
+        function completeBooking() {
+          showToast('Booking Demo: Redirecting...');
+        }
+
+        /* ==================== */
+        /* INITIALIZATION */
+        /* ==================== */
+
+        window.onload = function () {
+          // Hide loader
+          setTimeout(() => {
+            document.getElementById('loader').classList.add('hidden');
+          }, 1200);
+
+          // Initialize cars
+          renderCars();
+
+          // Start background slider
+          changeBackground();
+          setInterval(changeBackground, 4000);
+
+          // Setup scroll animations
+          setupRevealAnimations();
+          setupStaggerAnimations();
+          animateCounters();
+
+          // Add scroll event listener (throttled for performance)
+          window.addEventListener('scroll', throttle(onScroll, 10));
+
+          // Initial scroll check
+          onScroll();
+        };
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+              e.preventDefault();
+              const target = document.querySelector(href);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }
+          });
+        });
+
+        function logout() {
+          // Clear client-side login status
+          localStorage.removeItem("luxride_loggedin");
+          // Redirect to the server-side logout endpoint to destroy the session
+          // This ensures the server-side session is also cleared.
+          window.location.href = "api/logout.php";
+          // Prevent further script execution after redirection
+          return false;
+        }
+
+      </script>
+</body>
+
+</html>

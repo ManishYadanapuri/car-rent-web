@@ -1,0 +1,299 @@
+/* ═══════════════════════════════════════════════════════════
+   LuxRide Premium CSS Upgrades
+   Add <link rel="stylesheet" href="premium.css"> in <head>
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── DARK MODE VARIABLES ─────────────────────────────────── */
+:root {
+  --dm-bg:      #ffffff;
+  --dm-bg2:     #f8fafc;
+  --dm-bg3:     #f1f5f9;
+  --dm-text:    #0f172a;
+  --dm-muted:   #64748b;
+  --dm-border:  #e2e8f0;
+  --dm-card:    #ffffff;
+}
+[data-theme="dark"] {
+  --dm-bg:      #0f172a;
+  --dm-bg2:     #1e293b;
+  --dm-bg3:     #0f172a;
+  --dm-text:    #f1f5f9;
+  --dm-muted:   #94a3b8;
+  --dm-border:  #334155;
+  --dm-card:    #1e293b;
+  --white:      #1e293b;
+  --text-dark:  #f1f5f9;
+  --text-medium:#94a3b8;
+  --bg-light:   #0f172a;
+  --bg-white:   #1e293b;
+  --border:     #334155;
+}
+
+[data-theme="dark"] body { background:#0f172a; color:#f1f5f9; }
+[data-theme="dark"] .sticky-header,
+[data-theme="dark"] .main-nav { background:#1e293b; border-color:#334155; }
+[data-theme="dark"] .car-card { background:#1e293b; border-color:#334155; }
+[data-theme="dark"] .car-card:hover { border-color:#3b82f6; }
+[data-theme="dark"] .advanced-filters { background:#1e293b; border-color:#334155; }
+[data-theme="dark"] .chip { background:#334155; color:#94a3b8; border-color:#475569; }
+[data-theme="dark"] .chip.active { background:#1e40af; color:#fff; }
+[data-theme="dark"] .hero-search-form { background:#1e293b; border:1px solid #334155; }
+[data-theme="dark"] input, [data-theme="dark"] select {
+  background:#0f172a; color:#f1f5f9; border-color:#334155;
+}
+[data-theme="dark"] .testimonial-card { background:#1e293b; border-color:#334155; }
+[data-theme="dark"] .modal { background:#1e293b; border-color:#334155; }
+[data-theme="dark"] .section-header h2 { color:#f1f5f9; }
+
+/* Theme toggle in nav */
+#theme-toggle-btn {
+  background:none; border:none; cursor:pointer;
+  font-size:1rem; color:inherit; padding:.3rem .5rem;
+  border-radius:6px; transition:background .2s;
+}
+#theme-toggle-btn:hover { background:rgba(0,0,0,.06); }
+
+/* ── WISHLIST HEART BUTTON ───────────────────────────────── */
+.wishlist-btn {
+  position:absolute; top:10px; right:10px;
+  width:34px; height:34px; border-radius:50%;
+  background:rgba(255,255,255,.92); border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.9rem; color:#94a3b8; transition:all .25s;
+  z-index:3; box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+.wishlist-btn:hover { color:#f43f5e; transform:scale(1.12); }
+.wishlist-btn.wishlisted { color:#f43f5e; background:#fff1f2; }
+.wishlist-btn.wishlisted::before { content:'\f004'; font-family:'Font Awesome 6 Free'; font-weight:900; }
+
+/* ── COMPARE CHECKBOX ────────────────────────────────────── */
+.compare-check {
+  position:absolute; top:10px; left:10px;
+  width:28px; height:28px; border-radius:6px;
+  background:rgba(255,255,255,.92); border:2px solid #e2e8f0;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  font-size:.7rem; color:transparent; transition:all .2s; z-index:3;
+}
+.compare-check.comparing {
+  background:#1e40af; border-color:#1e40af; color:#fff;
+  content:'\f00c';
+}
+.compare-check.comparing::after {
+  content:'\f00c'; font-family:'Font Awesome 6 Free'; font-weight:900;
+}
+
+/* ── CAR CARD UPGRADES ───────────────────────────────────── */
+.car-card { position:relative; overflow:visible; }
+.car-image-wrap { position:relative; overflow:hidden; border-radius:10px 10px 0 0; }
+
+/* Urgency tags */
+.urgency-tag {
+  position:absolute; bottom:8px; left:8px; z-index:4;
+  padding:.2rem .6rem; border-radius:6px; font-size:.68rem;
+  font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+}
+.urgency-hot  { background:#fee2e2; color:#dc2626; border:1px solid #fca5a5; }
+.urgency-deal { background:#dcfce7; color:#16a34a; border:1px solid #86efac; }
+.urgency-new  { background:#eff6ff; color:#1d4ed8; border:1px solid #93c5fd; }
+.urgency-top  { background:#fefce8; color:#d97706; border:1px solid #fde047; }
+
+/* Booking badges */
+.badge-row {
+  display:flex; gap:.35rem; flex-wrap:wrap; margin-bottom:.5rem;
+}
+.badge-free-cancel {
+  background:#f0fdf4; color:#166534; border:1px solid #bbf7d0;
+  font-size:.65rem; font-weight:700; padding:.15rem .5rem; border-radius:4px;
+}
+.badge-instant {
+  background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe;
+  font-size:.65rem; font-weight:700; padding:.15rem .5rem; border-radius:4px;
+}
+.badge-popular {
+  background:#fff7ed; color:#c2410c; border:1px solid #fdba74;
+  font-size:.65rem; font-weight:700; padding:.15rem .5rem; border-radius:4px;
+}
+
+/* ── COMPARE BAR (bottom sticky) ────────────────────────── */
+.compare-bar {
+  position:fixed; bottom:0; left:0; right:0; z-index:200;
+  background:#1e293b; border-top:1px solid #334155;
+  transform:translateY(100%); transition:transform .3s ease;
+  box-shadow:0 -4px 24px rgba(0,0,0,.18);
+}
+.compare-bar-inner {
+  max-width:1280px; margin:0 auto; padding:.85rem 1.5rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+}
+.compare-bar-cars { display:flex; gap:.75rem; align-items:center; flex-wrap:wrap; }
+.compare-chip {
+  display:flex; align-items:center; gap:.5rem;
+  background:#334155; border-radius:8px; padding:.4rem .75rem;
+  font-size:.82rem; color:#f1f5f9; max-width:200px;
+}
+.compare-chip img { width:48px; height:32px; object-fit:cover; border-radius:4px; }
+.compare-chip span { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:110px; }
+.compare-remove {
+  background:none; border:none; color:#94a3b8; cursor:pointer;
+  font-size:1rem; line-height:1; flex-shrink:0;
+}
+.compare-remove:hover { color:#f43f5e; }
+.compare-empty-slot {
+  width:140px; height:46px; border:2px dashed #475569; border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.8rem; color:#64748b;
+}
+.compare-bar-actions { display:flex; align-items:center; gap:.75rem; flex-shrink:0; }
+.compare-btn-go {
+  background:#1e40af; color:#fff; border:none; border-radius:8px;
+  padding:.55rem 1.25rem; font-size:.875rem; font-weight:700; cursor:pointer;
+  transition:background .2s;
+}
+.compare-btn-go:hover { background:#1d4ed8; }
+.compare-btn-clear {
+  background:transparent; color:#94a3b8; border:1px solid #475569;
+  border-radius:8px; padding:.55rem 1rem; font-size:.875rem; cursor:pointer;
+}
+
+/* ── COMPARE MODAL ───────────────────────────────────────── */
+.compare-modal-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,.6);
+  z-index:500; display:flex; align-items:center; justify-content:center; padding:1rem;
+}
+.compare-modal {
+  background:#fff; border-radius:16px; padding:2rem;
+  max-width:900px; width:100%; max-height:90vh; overflow-y:auto;
+  position:relative;
+}
+[data-theme="dark"] .compare-modal { background:#1e293b; color:#f1f5f9; }
+.compare-modal-close {
+  position:absolute; top:1rem; right:1rem; background:none; border:none;
+  font-size:1.4rem; cursor:pointer; color:#64748b; line-height:1;
+}
+.compare-grid { display:flex; gap:0; overflow-x:auto; }
+.cmp-labels-col, .cmp-col {
+  flex:1; min-width:160px; border-right:1px solid #e2e8f0;
+}
+[data-theme="dark"] .cmp-labels-col, [data-theme="dark"] .cmp-col { border-color:#334155; }
+.cmp-labels-col { min-width:130px; }
+.cmp-col:last-child { border-right:none; }
+.cmp-col img { width:100%; height:110px; object-fit:cover; }
+.cmp-car-name { font-weight:700; font-size:.875rem; padding:.6rem .75rem; border-bottom:1px solid #e2e8f0; min-height:48px; }
+[data-theme="dark"] .cmp-car-name { border-color:#334155; }
+.cmp-cell, .cmp-label {
+  padding:.55rem .75rem; font-size:.82rem; border-bottom:1px solid #e2e8f0;
+  min-height:38px; display:flex; align-items:center;
+}
+[data-theme="dark"] .cmp-cell, [data-theme="dark"] .cmp-label { border-color:#334155; }
+.cmp-label { color:#64748b; font-weight:600; font-size:.75rem; }
+.cmp-img-placeholder { height:110px; }
+.cmp-col:nth-child(2) .cmp-cell { background:#f8faff; }
+[data-theme="dark"] .cmp-col:nth-child(2) .cmp-cell { background:rgba(30,64,175,.08); }
+
+/* ── RECENTLY VIEWED ─────────────────────────────────────── */
+#recently-viewed-section { display:none; padding:2rem 0; }
+.recent-grid { display:flex; gap:1rem; overflow-x:auto; padding-bottom:.5rem; }
+.recent-card {
+  display:flex; gap:.75rem; align-items:center;
+  background:var(--bg-white,#fff); border:1px solid var(--border,#e2e8f0);
+  border-radius:10px; padding:.65rem; min-width:220px; cursor:pointer;
+  transition:transform .2s, border-color .2s; flex-shrink:0;
+}
+.recent-card:hover { transform:translateY(-2px); border-color:#1e40af; }
+.recent-card img { width:70px; height:48px; object-fit:cover; border-radius:6px; }
+.recent-name { font-weight:700; font-size:.82rem; }
+.recent-price { color:#16a34a; font-size:.78rem; font-weight:700; margin-top:.2rem; }
+
+/* ── NO CARS EMPTY STATE ─────────────────────────────────── */
+.empty-state-cars {
+  text-align:center; padding:5rem 2rem; animation:fadeIn .4s ease;
+}
+.empty-state-cars .empty-icon {
+  font-size:4rem; opacity:.2; margin-bottom:1.25rem; display:block;
+}
+.empty-state-cars h3 { font-size:1.3rem; font-weight:700; margin-bottom:.5rem; }
+.empty-state-cars p { color:#64748b; margin-bottom:1.5rem; }
+.empty-state-cars .reset-btn {
+  background:#1e40af; color:#fff; border:none; border-radius:10px;
+  padding:.75rem 2rem; font-size:.9rem; font-weight:700; cursor:pointer;
+  transition:background .2s;
+}
+.empty-state-cars .reset-btn:hover { background:#1d4ed8; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+
+/* ── FEATURE TOAST ───────────────────────────────────────── */
+.feature-toast {
+  position:fixed; bottom:1.5rem; right:1.5rem; z-index:9999;
+  padding:.8rem 1.4rem; border-radius:12px; font-size:.875rem; font-weight:600;
+  transform:translateY(60px); opacity:0; transition:all .3s ease;
+  max-width:320px; pointer-events:none;
+}
+.feature-toast.show { transform:translateY(0); opacity:1; }
+.feature-toast-success { background:#dcfce7; color:#166534; border:1px solid #bbf7d0; }
+.feature-toast-error   { background:#fee2e2; color:#991b1b; border:1px solid #fecaca; }
+.feature-toast-info    { background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+
+/* ── MOBILE RESPONSIVE UPGRADES ─────────────────────────── */
+@media (max-width: 768px) {
+  .compare-bar-inner { flex-direction:column; gap:.75rem; }
+  .compare-bar-actions { width:100%; justify-content:flex-end; }
+  .compare-modal { padding:1.25rem; }
+  .compare-grid { flex-direction:column; }
+  .cmp-labels-col { display:none; }
+  .cmp-col { min-width:100%; border-right:none; border-bottom:1px solid #e2e8f0; }
+  .hero-search-form { flex-direction:column; align-items:stretch; }
+  .filter-chips { flex-wrap:wrap; gap:.4rem; }
+  .chip { font-size:.78rem; padding:.4rem .7rem; }
+  .extra-filters { flex-direction:column; gap:.75rem; }
+  .extra-filters .filter-group { width:100%; }
+  .extra-filters select { width:100%; }
+  .booking-modal .modal { padding:1rem; }
+}
+
+@media (max-width: 480px) {
+  .stats-bar { display:none; }
+  .car-card .car-price { font-size:1rem; }
+  .car-card .car-name  { font-size:.9rem; }
+  .wishlist-btn { width:30px; height:30px; font-size:.8rem; }
+}
+
+/* ── PREMIUM HERO BADGE ROW ──────────────────────────────── */
+.hero-trust-row {
+  display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;
+  margin-top:1rem;
+}
+.hero-trust-item {
+  display:flex; align-items:center; gap:.4rem;
+  color:rgba(255,255,255,.9); font-size:.82rem; font-weight:600;
+}
+.hero-trust-item i { color:#f59e0b; }
+
+/* ── IMPROVED TESTIMONIALS ───────────────────────────────── */
+.testimonial-card { position:relative; }
+.testimonial-badge {
+  position:absolute; top:1rem; right:1rem;
+  background:#f59e0b; color:#fff; font-size:.65rem; font-weight:800;
+  padding:.15rem .5rem; border-radius:4px; text-transform:uppercase;
+}
+.testimonial-location {
+  font-size:.72rem; color:#94a3b8; margin-top:.15rem;
+  display:flex; align-items:center; gap:.3rem;
+}
+.testimonial-date { font-size:.7rem; color:#94a3b8; margin-top:.5rem; }
+
+/* ── NAV USER PILL ───────────────────────────────────────── */
+.user-nav-pill {
+  display:flex; align-items:center; gap:.5rem;
+  background:#f1f5f9; border-radius:20px;
+  padding:.35rem .85rem .35rem .5rem;
+  text-decoration:none; color:#0f172a; font-size:.82rem; font-weight:600;
+  transition:background .2s;
+}
+[data-theme="dark"] .user-nav-pill { background:#334155; color:#f1f5f9; }
+.user-nav-pill:hover { background:#e2e8f0; }
+.user-nav-avatar {
+  width:26px; height:26px; border-radius:50%;
+  background:linear-gradient(135deg,#1e40af,#f59e0b);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.7rem; font-weight:800; color:#fff;
+}
